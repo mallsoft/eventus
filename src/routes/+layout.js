@@ -1,4 +1,5 @@
-import { env } from '$env/dynamic/public';
+import { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } from '$env/static/public';
+
 import { createSupabaseLoadClient } from '@supabase/auth-helpers-sveltekit';
 import { error } from '@sveltejs/kit';
 
@@ -6,8 +7,8 @@ export const load = async ({ fetch, data, depends }) => {
 	depends('supabase:auth');
 
 	const supabase = createSupabaseLoadClient({
-		supabaseUrl: env.PUBLIC_SUPABASE_URL,
-		supabaseKey: env.PUBLIC_SUPABASE_ANON_KEY,
+		supabaseUrl: PUBLIC_SUPABASE_URL,
+		supabaseKey: PUBLIC_SUPABASE_ANON_KEY,
 		event: { fetch },
 		serverSession: data.session
 	});

@@ -1,0 +1,23 @@
+:root {
+}
+
+body {
+	font-family: 'Readex Pro Variable', sans-serif;
+}
+
+* {
+	font: inherit;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+ul,
+ol,
+li {
+	list-style: none;
+}
+
+button,
+input {
+}

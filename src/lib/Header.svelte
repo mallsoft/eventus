@@ -14,3 +14,9 @@
 		</form>
 	{/if}
 </header>
+
+<style>
+	header {
+		background-color: red;
+	}
+</style>

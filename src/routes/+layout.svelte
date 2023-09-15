@@ -2,6 +2,8 @@
 	import { invalidate } from '$app/navigation';
 	import Header from '$lib/Header.svelte';
 	import { onMount } from 'svelte';
+	import '@fontsource-variable/readex-pro';
+	import '../app.css';
 
 	export let data;
 
@@ -32,12 +34,5 @@
 		flex-direction: column;
 		gap: 1rem;
 		padding: 1rem;
-	}
-
-	:global(body) {
-		& ol,
-		li {
-			list-style: none;
-		}
 	}
 </style>

@@ -4,13 +4,11 @@ import { error, fail, redirect } from '@sveltejs/kit';
 /** @type {import('./$types').Actions} */
 export const actions = {
 	login: async ({ request, locals: { supabase } }) => {
-		console.log(request);
-		console.log(request.url.href);
-
+		const { origin } = new URL(request.url);
 		const { data, error } = await supabase.auth.signInWithOAuth({
 			provider: 'github',
 			options: {
-				redirectTo: request.url.href
+				redirectTo: origin
 			}
 		});
 
@@ -20,16 +18,16 @@ export const actions = {
 
 		throw redirect(303, data.url);
 	},
-	logout: async ({ locals: { supabase } }) => {
+	logout: async ({ request, locals: { supabase } }) => {
 		const { error } = await supabase.auth.signOut();
 
 		if (error) {
 			return fail(500, { message: 'Server error. Try again later.', success: false });
 		}
 
-		return {
-			success: true
-		};
+		const { origin } = new URL(request.url);
+
+		throw redirect(303, origin);
 	},
 	createEvent: async ({ request, locals: { supabase, getSession } }) => {
 		const session = await getSession();

@@ -27,6 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@fontsource-variable/readex-pro": "^5.0.8",
 		"@supabase/auth-helpers-sveltekit": "^0.10.2",
 		"@supabase/supabase-js": "^2.33.2"
 	}

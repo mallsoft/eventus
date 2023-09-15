@@ -1,10 +1,13 @@
-lockfileVersion: '6.0'
+lockfileVersion: '6.1'
 
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fontsource-variable/readex-pro':
+    specifier: ^5.0.8
+    version: 5.0.8
   '@supabase/auth-helpers-sveltekit':
     specifier: ^0.10.2
     version: 0.10.2(@supabase/supabase-js@2.33.2)(@sveltejs/kit@1.25.0)
@@ -273,6 +276,10 @@ packages:
     resolution: {integrity: sha512-1S8uAY/MTJqVx0SC4epBq+N2yhuwtNwLbJYNZyhL2pO1ZVKn5HFXav5T41Ryzy9K9V7ZId2JB2oy/W4aCd9/2w==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource-variable/readex-pro@5.0.8:
+    resolution: {integrity: sha512-hl1pW5gcDtKxufNLf7Tjxw3uUO/kp/dfK0UmiZlCNZqyOQI/awvVtsOXcAHceU4BhnRsoVf8QYvR95SSidBC6g==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.11:
     resolution: {integrity: sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==}
