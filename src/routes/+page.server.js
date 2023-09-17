@@ -32,7 +32,10 @@ export const actions = {
 
 /** @type {import('./$types').PageLoad} */
 export const load = async ({ locals: { supabase } }) => {
-	let { data: events, error: err } = await supabase.from('events').select('*, attendees(id) ');
+	let { data: events, error: err } = await supabase
+		.from('events')
+		.select('*, attendees(id) ')
+		.order('start_time', { ascending: false });
 
 	if (err) {
 		throw error(500, err);
