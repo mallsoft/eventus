@@ -5,9 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
-  '@fontsource-variable/readex-pro':
-    specifier: ^5.0.8
-    version: 5.0.8
+  '@fontsource-variable/urbanist':
+    specifier: ^5.0.12
+    version: 5.0.13
+  '@picocss/pico':
+    specifier: ^1.5.10
+    version: 1.5.10
   '@supabase/auth-helpers-sveltekit':
     specifier: ^0.10.2
     version: 0.10.2(@supabase/supabase-js@2.33.2)(@sveltejs/kit@1.25.0)
@@ -277,8 +280,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@fontsource-variable/readex-pro@5.0.8:
-    resolution: {integrity: sha512-hl1pW5gcDtKxufNLf7Tjxw3uUO/kp/dfK0UmiZlCNZqyOQI/awvVtsOXcAHceU4BhnRsoVf8QYvR95SSidBC6g==}
+  /@fontsource-variable/urbanist@5.0.13:
+    resolution: {integrity: sha512-WIsy5j9KD9GDZJYRVnCHLP3t9XDI2ssU+zFtUu3b3PUHm7rXjnBbfl2df3zCDjtazfoktOB5KzvEPizhlJCkbQ==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.11:
@@ -346,6 +349,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
+
+  /@picocss/pico@1.5.10:
+    resolution: {integrity: sha512-+LafMsrwPxXQMk6sI///TmSInCwwZmq+K7SikyL3N/4GhhwzyPC+TQLUEqmrLyjluR+uIpFFcqjty30Rtr6GxQ==}
+    dev: false
 
   /@polka/url@1.0.0-next.23:
     resolution: {integrity: sha512-C16M+IYz0rgRhWZdCmK+h58JMv8vijAA61gmz2rspCSwKwzBebpdcsiUmwrtJRdphuY30i6BSLEOP8ppbNLyLg==}

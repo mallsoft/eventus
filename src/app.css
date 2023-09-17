@@ -1,23 +1,38 @@
-:root {
-}
-
 body {
-	font-family: 'Readex Pro Variable', sans-serif;
+	font-family: Helvetica, sans-serif;
+	letter-spacing: 0.085rem;
+	color: rgb(44, 44, 44);
+	background-color: rgb(233, 233, 233);
 }
 
-* {
-	font: inherit;
-	box-sizing: border-box;
+ol,
+ul,
+li {
+	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-ul,
-ol,
-li {
-	list-style: none;
+pre {
+	padding: 1rem;
 }
 
-button,
-input {
+a {
+	color: inherit;
+	font-weight: bold;
+}
+a:not(:focus, :hover) {
+	text-decoration: none;
+}
+
+input,
+button {
+	border-radius: 0;
+	border: 4px solid currentColor;
+	background-color: currentColor;
+}
+
+input,
+button {
+	background-color: transparent;
 }

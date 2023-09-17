@@ -1,8 +1,7 @@
 <script>
 	import { invalidate } from '$app/navigation';
-	import Header from '$lib/Header.svelte';
+	import Header from './_components/Header.svelte';
 	import { onMount } from 'svelte';
-	import '@fontsource-variable/readex-pro';
 	import '../app.css';
 
 	export let data;
@@ -24,15 +23,6 @@
 
 <Header {data} />
 
-<main>
+<main class="container">
 	<slot />
 </main>
-
-<style>
-	main {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		padding: 1rem;
-	}
-</style>

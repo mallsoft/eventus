@@ -1,11 +1,23 @@
 <script>
-	import CreateEvent from '$lib/CreateEvent.svelte';
-	import EventList from '$lib/EventList.svelte';
 	export let data;
 </script>
 
-{#if data.event_admin}
-	<CreateEvent />
-{/if}
+<section>
+	<h2>Events</h2>
+	<ol>
+		{#each data?.events as event}
+			<!-- {@const { name, description, start_time, end_time } = event} -->
+			<li>
+				<pre>{JSON.stringify(event, null, 2)}</pre>
+			</li>
+		{/each}
+	</ol>
+</section>
 
-<EventList {data} />
+<style>
+	pre {
+		background-color: rgb(24, 24, 24);
+		color: rgb(0, 255, 85);
+		border-radius: 6px;
+	}
+</style>
