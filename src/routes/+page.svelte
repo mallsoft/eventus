@@ -6,7 +6,6 @@
 	<h2>Events</h2>
 	<ol>
 		{#each data?.events as event}
-			<!-- {@const { name, description, start_time, end_time } = event} -->
 			<li>
 				<pre>{JSON.stringify(event, null, 2)}</pre>
 			</li>
