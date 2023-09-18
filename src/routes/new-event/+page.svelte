@@ -103,6 +103,7 @@
 		justify-content: center;
 		grid-template-columns: repeat(auto-fit, 30ch);
 		gap: 1rem;
+		max-width: 900px;
 	}
 	button {
 		grid-column: 1/-1;

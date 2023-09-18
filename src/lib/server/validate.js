@@ -24,23 +24,22 @@ export function validateEvent({
 		}
 
 		if (start && end) {
-			if (start < end) fails.push('start time behind end time');
+			if (start > end) fails.push('start time after end time');
 		} else {
 			if (!start) fails.push(`start time invalid ${start_time}`);
 			if (!end) fails.push('end time invalid');
 		}
 
 		if (!rsvp) {
-			console.log(rsvp);
 			fails.push('rsvp time invalid');
 		} else if (start && rsvp > start) {
-			fails.push('rsvp time is behind start time');
+			fails.push('rsvp time is after start time');
 		}
 
 		if (!publish) {
 			fails.push('publish time invalid');
 		} else if (start && publish < start) {
-			fails.push('publish time is behind start time');
+			fails.push('publish time is after start time');
 		}
 
 		//
