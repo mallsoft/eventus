@@ -19,6 +19,7 @@
 </script>
 
 <article>
+	<h2>Create new event</h2>
 	{#if form?.validationErrors}
 		<div class="errorbois">
 			<h3>Validation Errors (aka server complaints)</h3>
@@ -98,12 +99,19 @@
 </article>
 
 <style>
+	article {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
 	form {
 		display: grid;
 		justify-content: center;
 		grid-template-columns: repeat(auto-fit, 30ch);
 		gap: 1rem;
 		max-width: 900px;
+		width: 100%;
 	}
 	button {
 		grid-column: 1/-1;
@@ -113,11 +121,9 @@
 		display: flex;
 		flex-direction: column;
 	}
-
 	textarea {
 		resize: vertical;
 	}
-
 	.errorbois {
 		padding: 1rem;
 		margin: 1rem 0;
