@@ -16,25 +16,63 @@ export const load = async ({ locals: { supabase } }) => {
 
 /** @type {import('./$types').Actions} */
 export const actions = {
-	eventDelete: async () => {
-		console.log('DELETE EVENT');
+	eventDelete: async ({ request, locals: { supabase } }) => {
+		const formData = await request.formData();
+		const event_id = formData.get('eventId');
+		console.log('DELETE EVENT', event_id);
+
+		const { error } = await supabase.from('events').delete().eq('id', event_id);
+
+		if (error) {
+			console.error(error);
+			return fail(500, { message: 'Server error. Try again later.' });
+		}
+
+		return { success: true };
 	},
 	eventRegister: async ({ request, locals: { supabase } }) => {
 		const formData = await request.formData();
 		const event_id = formData.get('eventId');
 		console.log('REGISTER EVENT => event id:' + event_id);
 
-		const { data, error } = await supabase
+		const { error } = await supabase
 			.from('attendees')
-			.insert([{ some_column: 'someValue', other_column: 'otherValue' }])
-			.select();
+			.delete([
+				{
+					event_id: event_id
+				}
+			])
+			.eq('id', 1);
+
+		if (error) {
+			console.error(error);
+			return fail(500, { message: 'Server error. Try again later.' });
+		}
+
+		return { success: true };
 	},
 	eventUnregister: async ({ request, locals: { supabase } }) => {
 		const formData = await request.formData();
 		const event_id = formData.get('eventId');
 		console.log('UNREGISTER EVENT => event id:' + event_id);
+
+		const { error } = await supabase
+			.from('attendees')
+			.delete([
+				{
+					event_id: event_id
+				}
+			])
+			.eq('id', 1);
+
+		if (error) {
+			console.error(error);
+			return fail(500, { message: 'Server error. Try again later.' });
+		}
+
+		return { success: true };
 	},
-	//auth
+	// ---------- auth ----------
 	login: async ({ request, locals: { supabase } }) => {
 		const { origin } = new URL(request.url);
 		const { data, error } = await supabase.auth.signInWithOAuth({
@@ -45,6 +83,7 @@ export const actions = {
 		});
 
 		if (error) {
+			console.log(error);
 			return fail(500, { message: 'Server error. Try again later.' });
 		}
 
@@ -54,6 +93,7 @@ export const actions = {
 		const { error } = await supabase.auth.signOut();
 
 		if (error) {
+			console.log(error);
 			return fail(500, { message: 'Server error. Try again later.' });
 		}
 
