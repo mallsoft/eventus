@@ -1,9 +1,35 @@
+:root {
+	--color-a: #000a16;
+	--color-b: #ffffff;
+	--color-c: #3700ff;
+	--color-d: #d3d2ff;
+
+	--err-text: #ff6f6f;
+	--err-bg: #423030;
+
+	---colwidth: 800px;
+}
+
+html {
+	height: 100%;
+}
+
+* {
+	margin: 0;
+	box-sizing: border-box;
+}
+
 body {
 	font-family: Helvetica, sans-serif;
-	letter-spacing: 0.085rem;
 
-	color: rgb(78, 78, 78);
-	background-color: rgb(233, 233, 233);
+	background-color: var(--color-a);
+	color: var(--color-b);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	min-height: 100%;
 }
 
 ol,
@@ -14,37 +40,77 @@ li {
 	padding: 0;
 }
 
-pre {
-	padding: 1rem;
-}
-
-a {
-	color: inherit;
-	font-weight: bold;
-}
-a:not(:focus, :hover) {
-	text-decoration: none;
+strong,
+em {
+	line-height: 1;
 }
 
 input,
 button,
 textarea {
-	border-radius: 0;
-	border: 4px solid white;
+	color: black;
 	background-color: white;
-	padding: 0.5rem;
-	box-shadow: 0 8px 8px -10px rgb(0, 0, 0, 0.3);
+
+	font: inherit;
+	font-size: 1.125rem;
+	padding: 1rem;
+	border-radius: 0;
+	border: none;
 }
 
-:is(input, button, textarea):hover {
-	box-shadow: 0 10px 8px -10px rgb(0, 0, 0, 0.3);
+.buttony {
+	display: block;
+}
+.buttony:not(:focus, :hover) {
+	text-decoration: none;
 }
 
-:is(input, button, textarea):focus {
-	outline: none;
-	border-color: rgb(205, 205, 205);
+button,
+.buttony {
+	box-sizing: border-box;
+	font-weight: bold;
+	background-color: var(--color-c);
+	color: var(--color-d);
+
+	padding: 1rem;
+	font-size: 1.5rem;
 }
-:is(input, button, textarea):active {
-	outline: none;
-	border-color: rgb(194, 194, 194);
+
+@media (width < 610px) {
+	input,
+	button,
+	textarea {
+		font-size: 1rem;
+		padding: 0.5rem;
+	}
+	button,
+	.buttony {
+		padding: 0.75rem;
+		font-size: 1.25rem;
+	}
+}
+@media (width < 410px) {
+	button,
+	.buttony {
+		font-size: 1rem;
+	}
+}
+
+input,
+button,
+textarea {
+	position: relative;
+}
+
+:is(.buttony, button):not(:active):hover {
+	color: var(--color-b);
+}
+
+button:disabled {
+	color: var(--color-d);
+	filter: opacity(0.5);
+}
+
+:is(.buttony, button):active {
+	color: var(--color-d);
 }

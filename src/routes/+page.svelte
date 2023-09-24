@@ -1,60 +1,72 @@
 <script>
 	import { enhance } from '$app/forms';
+	import Event from '$lib//Event.svelte';
+	import LogInOut from '$lib/LogInOut.svelte';
 
 	export let data;
+
+	console.log(data);
+	console.log(data.events);
 </script>
 
-<article>
-	<h2>Events</h2>
-	<ol>
-		{#each data?.events as event}
-			<li>
-				<pre>{JSON.stringify(event, null, 2)}</pre>
+<h1>Events</h1>
+<ol>
+	{#each data?.events as event}
+		{@const isTooLate = new Date().getTime() >= new Date(event.rsvp_before).getTime()}
+		<!-- {@const eventIsFull = ?? >= event.max_pax} -->
+		{@const eventIsFull = false}
+		{@const canRsvp = !isTooLate && !eventIsFull}
 
-				<div>
-					{#if data.event_admin}
-						<form action="?/eventDelete" method="post" use:enhance>
-							<input type="hidden" value={event.id} name="eventId" />
-							<button type="submit">Delete event</button>
-						</form>
-					{/if}
+		<li>
+			<Event {event} />
+
+			<div>
+				{#if data.event_admin}
+					<form action="?/eventDelete" method="post" use:enhance>
+						<input type="hidden" value={event.id} name="eventId" />
+						<button type="submit">Delete event</button>
+					</form>
+				{/if}
+				{#if data.session}
 					<form
-						action="?/{event.attendees?.lenght > 0 ? 'eventUnregister' : 'eventRegister'}"
+						action="?/{event.attendees?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
 						method="post"
 						use:enhance
 					>
 						<input type="hidden" value={event.id} name="eventId" />
-						<button type="submit">{event.attendees?.length > 0 ? 'Unregister' : 'Register'}</button>
+						<button disabled={!canRsvp} type="submit">
+							{#if canRsvp}
+								{event.attendees?.length > 0 ? 'Unregister' : 'Register'}
+							{:else}
+								Registering closed
+							{/if}
+						</button>
 					</form>
-				</div>
-			</li>
-		{/each}
-	</ol>
-</article>
+				{:else}
+					<LogInOut {data} loginText="Log in to register" />
+				{/if}
+			</div>
+		</li>
+	{/each}
+</ol>
 
 <style>
-	article {
+	ol {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-	}
+		gap: 4rem;
 
-	ol {
-		max-width: 900px;
 		width: 100%;
 	}
 
 	li {
-		background-color: rgb(60, 60, 60);
-	}
-	pre {
-		background-color: rgb(60, 60, 60);
-		color: rgb(0, 255, 100);
-		border-radius: 6px;
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
 	}
 
 	div {
 		display: flex;
-		gap: 4px;
+		gap: 1rem;
 	}
 </style>

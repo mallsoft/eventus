@@ -1,6 +1,6 @@
 export function validateEvent({
 	name,
-	// description,
+	description,
 	start_time,
 	end_time,
 	max_pax,
@@ -15,12 +15,19 @@ export function validateEvent({
 	const publish = new Date(publish_on).getTime();
 
 	try {
-		if (!name) {
+		if (!name || name.length >= 100) {
 			fails.push('Not valid name');
+		}
+
+		if (description && description.length >= 1000) {
+			fails.push('Description too long');
 		}
 
 		if (!max_pax || isNaN(parseInt(max_pax)) || parseInt(max_pax) < 1) {
 			fails.push('Attendees needs to be greater than 0');
+		}
+		if (parseInt(max_pax) > 9_000_000) {
+			fails.push('how many people???');
 		}
 
 		if (start && end) {
@@ -38,7 +45,7 @@ export function validateEvent({
 
 		if (!publish) {
 			fails.push('publish time invalid');
-		} else if (start && publish < start) {
+		} else if (start && publish > start) {
 			fails.push('publish time is after start time');
 		}
 

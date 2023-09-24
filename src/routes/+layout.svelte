@@ -1,6 +1,6 @@
 <script>
 	import { invalidate } from '$app/navigation';
-	import Header from './_components/Header.svelte';
+	import Nav from '$lib/Nav.svelte';
 	import { onMount } from 'svelte';
 	import '../app.css';
 
@@ -21,8 +21,36 @@
 	});
 </script>
 
-<Header {data} />
+<Nav {data} />
 
 <main class="container">
 	<slot />
 </main>
+
+<style>
+	main {
+		box-sizing: border-box;
+
+		display: flex;
+		flex-direction: column;
+		padding: 1rem;
+		max-width: var(---colwidth);
+		width: 100%;
+
+		margin-top: 4rem;
+		margin-bottom: 8rem;
+	}
+
+	main > :global(h1) {
+		font-size: 5rem;
+
+		padding-bottom: 1rem;
+		margin-bottom: 4rem;
+	}
+
+	@media (width < 610px) {
+		main > :global(h1) {
+			font-size: 3rem;
+		}
+	}
+</style>

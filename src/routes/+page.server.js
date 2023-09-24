@@ -4,7 +4,7 @@ import { error, fail, redirect } from '@sveltejs/kit';
 export const load = async ({ locals: { supabase } }) => {
 	let { data: events, error: err } = await supabase
 		.from('events')
-		.select('*, attendees(id) ')
+		.select('*, pax:rsvps(count)')
 		.order('start_time', { ascending: false });
 
 	if (err) {
@@ -33,16 +33,11 @@ export const actions = {
 	eventRegister: async ({ request, locals: { supabase } }) => {
 		const formData = await request.formData();
 		const event_id = formData.get('eventId');
-		console.log('REGISTER EVENT => event id:' + event_id);
+		console.log('REGISTER => event id:' + event_id);
 
-		const { error } = await supabase
-			.from('attendees')
-			.delete([
-				{
-					event_id: event_id
-				}
-			])
-			.eq('id', 1);
+		const { error } = await supabase.rpc('register_to_event', {
+			event_id
+		});
 
 		if (error) {
 			console.error(error);
@@ -54,16 +49,9 @@ export const actions = {
 	eventUnregister: async ({ request, locals: { supabase } }) => {
 		const formData = await request.formData();
 		const event_id = formData.get('eventId');
-		console.log('UNREGISTER EVENT => event id:' + event_id);
+		console.log('UNREGISTER => event id:' + event_id);
 
-		const { error } = await supabase
-			.from('attendees')
-			.delete([
-				{
-					event_id: event_id
-				}
-			])
-			.eq('id', 1);
+		const { error } = await supabase.rpc('unregister_from_event', { event_id });
 
 		if (error) {
 			console.error(error);
