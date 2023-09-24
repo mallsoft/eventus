@@ -1,6 +1,6 @@
 <script>
 	export let event;
-	$: ({ created_at, name, description, start_time, end_time, max_pax, rsvp_before } = event);
+	$: ({ created_at, name, description, start_time, end_time, max_pax, pax, rsvp_before } = event);
 
 	$: inFuture = new Date().getTime() < new Date(start_time).getTime();
 	$: inPast = new Date().getTime() > new Date(end_time).getTime();
@@ -41,7 +41,7 @@
 	{/if}
 	<ul>
 		<li>
-			Spots {max_pax}/{max_pax}
+			Spots {pax}/{max_pax}
 		</li>
 		<li>
 			<!--  -->

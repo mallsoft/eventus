@@ -5,8 +5,7 @@
 
 	export let data;
 
-	console.log(data);
-	console.log(data.events);
+	$: console.log('-->', data.events);
 </script>
 
 <h1>Events</h1>
@@ -29,14 +28,14 @@
 				{/if}
 				{#if data.session}
 					<form
-						action="?/{event.attendees?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
+						action="?/{event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
 						method="post"
 						use:enhance
 					>
 						<input type="hidden" value={event.id} name="eventId" />
 						<button disabled={!canRsvp} type="submit">
 							{#if canRsvp}
-								{event.attendees?.length > 0 ? 'Unregister' : 'Register'}
+								{event.attending?.length > 0 ? 'Unregister' : 'Register'}
 							{:else}
 								Registering closed
 							{/if}

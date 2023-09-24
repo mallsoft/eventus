@@ -4,12 +4,14 @@ import { error, fail, redirect } from '@sveltejs/kit';
 export const load = async ({ locals: { supabase } }) => {
 	let { data: events, error: err } = await supabase
 		.from('events')
-		.select('*, pax:rsvps(count)')
+		.select('*, attending:rsvps(*)')
 		.order('start_time', { ascending: false });
 
 	if (err) {
 		throw error(500, err);
 	}
+
+	console.log(events);
 
 	return { events };
 };
