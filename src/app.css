@@ -102,7 +102,7 @@ textarea {
 	position: relative;
 }
 
-:is(.buttony, button):not(:active):hover {
+:is(.buttony, button):not(:active, :disabled):hover {
 	color: var(--color-b);
 }
 
