@@ -7,6 +7,8 @@
 </script>
 
 {#if !data.session}
+	<!-- log in -->
+
 	<form action="/?/login" method="POST">
 		<button type="submit">
 			{#if loginText}
@@ -17,13 +19,15 @@
 		</button>
 	</form>
 {:else}
+	<!-- log out -->
+
 	{@const username = data?.session?.user?.user_metadata?.user_name ?? ''}
 	<form action="/?/logout" method="POST" use:enhance>
 		<button type="submit" class="contrast outline">
 			{#if !logoutText}
-				logout
+				<span>logout</span>
 				{#if username}
-					<strong>{username}</strong>
+					<b>{username}</b>
 				{/if}
 			{:else}
 				{logoutText}

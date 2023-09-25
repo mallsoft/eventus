@@ -1,5 +1,5 @@
 <script>
-	import { invalidate } from '$app/navigation';
+	import { invalidate, invalidateAll } from '$app/navigation';
 	import Nav from '$lib/Nav.svelte';
 	import { onMount } from 'svelte';
 	import '../app.css';
@@ -15,15 +15,15 @@
 			if (_session?.expires_at !== session?.expires_at) {
 				invalidate('supabase:auth');
 			}
+
+			if (event === 'SIGNED_IN') {
+				invalidateAll();
+			}
 		});
 
 		return () => subscription.unsubscribe();
 	});
 </script>
-
-<svelte:head>
-	<title>Events!</title>
-</svelte:head>
 
 <Nav {data} />
 
@@ -41,14 +41,17 @@
 		max-width: var(---colwidth);
 		width: 100%;
 
-		margin-top: 4rem;
+		margin-top: 2rem;
 		margin-bottom: 8rem;
 	}
 
 	main > :global(h1) {
+		background-color: var(--color-c);
+		color: var(--color-a);
+
 		font-size: 5rem;
 
-		padding-bottom: 1rem;
+		padding: 1rem 2rem;
 		margin-bottom: 4rem;
 	}
 

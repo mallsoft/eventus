@@ -2,7 +2,8 @@
 	--color-a: #000a16;
 	--color-b: #ffffff;
 	--color-c: #3700ff;
-	--color-d: #d3d2ff;
+	--color-d: #84eeff;
+	--color-e: #12ff90;
 
 	--err-text: #ff6f6f;
 	--err-bg: #423030;
@@ -30,6 +31,8 @@ body {
 	align-items: center;
 
 	min-height: 100%;
+
+	scrollbar-gutter: stable;
 }
 
 ol,
@@ -38,11 +41,6 @@ li {
 	list-style: none;
 	margin: 0;
 	padding: 0;
-}
-
-strong,
-em {
-	line-height: 1;
 }
 
 input,
