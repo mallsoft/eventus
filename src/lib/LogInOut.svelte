@@ -1,12 +1,9 @@
 <script>
 	import { enhance } from '$app/forms';
-	import { invalidateAll } from '$app/navigation';
-	import { applyAction } from '$app/forms';
 	export let data;
 
 	export let loginText = '';
 	export let logoutText = '';
-	export let redirectOnLogin = '';
 </script>
 
 {#if !data.session}

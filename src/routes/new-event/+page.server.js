@@ -30,7 +30,6 @@ export const actions = {
 			rsvp_before: formData.get('rsvpTime'),
 			start_time: formData.get('startTime')
 		};
-		console.log(new_event);
 
 		const fails = validateEvent(new_event);
 

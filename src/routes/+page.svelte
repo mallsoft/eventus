@@ -4,8 +4,6 @@
 	import LogInOut from '$lib/LogInOut.svelte';
 
 	export let data;
-
-	$: console.log('-->', data.events);
 </script>
 
 <h1>Events</h1>

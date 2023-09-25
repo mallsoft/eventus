@@ -11,8 +11,6 @@ export const load = async ({ locals: { supabase } }) => {
 		throw error(500, err);
 	}
 
-	console.log(events);
-
 	return { events };
 };
 

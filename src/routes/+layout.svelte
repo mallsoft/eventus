@@ -21,6 +21,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Events!</title>
+</svelte:head>
+
 <Nav {data} />
 
 <main class="container">
