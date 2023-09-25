@@ -16,9 +16,7 @@
 				invalidate('supabase:auth');
 			}
 
-			if (event === 'SIGNED_IN') {
-				invalidateAll();
-			}
+			invalidateAll(); // todo...
 		});
 
 		return () => subscription.unsubscribe();
