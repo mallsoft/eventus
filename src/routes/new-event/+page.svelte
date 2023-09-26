@@ -1,17 +1,8 @@
 <script>
 	import { enhance } from '$app/forms';
+	import { dateTimeFormat } from '$lib/time.js';
 
 	export let form;
-
-	const dateTimeFormat = (d) => {
-		//why isn't this a part of the datetime-local thing??? YYYY-MM-DDTHH:MM
-		const year = d.getFullYear();
-		const month = String(d.getMonth() + 1).padStart(2, '0'); // Month is 0-based, so add 1 and pad with '0' if needed
-		const day = String(d.getDate()).padStart(2, '0');
-		const hour = String(d.getHours()).padStart(2, '0');
-		const minute = String(d.getMinutes()).padStart(2, '0');
-		return `${year}-${month}-${day}T${hour}:${minute}`;
-	};
 
 	const currentTime = dateTimeFormat(new Date());
 
@@ -51,16 +42,6 @@
 	</label>
 
 	<label>
-		<span>Publish</span>
-		<input required type="datetime-local" name="publishTime" value={currentTime} max={startTime} />
-	</label>
-
-	<label>
-		<span>Rsvp before</span>
-		<input required type="datetime-local" name="rsvpTime" value={currentTime} max={startTime} />
-	</label>
-
-	<label>
 		<span>Max attendees</span>
 		<input
 			required
@@ -88,6 +69,18 @@
 		<span>End time</span>
 		<input required type="datetime-local" name="endTime" value={currentTime} min={startTime} />
 	</label>
+
+	<label>
+		<span>Publish</span>
+		<input required type="datetime-local" name="publishTime" value={currentTime} max={startTime} />
+	</label>
+
+	<label>
+		<span>Rsvp before</span>
+		<input required type="datetime-local" name="rsvpTime" value={currentTime} max={startTime} />
+	</label>
+
+	<input type="hidden" name="tz" value={new Date().getTimezoneOffset()} />
 
 	<button type="submit">Create event!</button>
 </form>

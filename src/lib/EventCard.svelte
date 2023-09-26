@@ -10,12 +10,13 @@
 		minute: 'numeric'
 	};
 	const dt = new Intl.DateTimeFormat(undefined, opts);
-	const dt_en = new Intl.DateTimeFormat('en', opts);
 
 	$: range = dt.formatRange(new Date(start_time), new Date(end_time));
 	$: rsvp = dt.format(new Date(rsvp_before));
 </script>
 
+{new Date(start_time)} <br /><br /><br /><br />
+{start_time}
 <article>
 	<h2>
 		{name}
