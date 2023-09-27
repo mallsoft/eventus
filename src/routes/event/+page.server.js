@@ -39,15 +39,15 @@ export const actions = {
 			return fail(400, { validationErrors: fails });
 		}
 
-		console.log(new_event);
-		// const offset = formData.get('tz');
-		// new_event = {
-		// 	...new_event,
-		// 	publish_on: tz(new_event.publish_on, offset),
-		// 	rsvp_before: tz(new_event.rsvp_before, offset),
-		// 	start_time: tz(new_event.start_time, offset),
-		// 	end_time: tz(new_event.end_time, offset)
-		// };
+		const offset = +formData.get('tz');
+
+		new_event = {
+			...new_event,
+			publish_on: tz(new_event.publish_on, offset),
+			rsvp_before: tz(new_event.rsvp_before, offset),
+			start_time: tz(new_event.start_time, offset),
+			end_time: tz(new_event.end_time, offset)
+		};
 
 		const { error: err } = await supabase.from('events').insert([new_event]).select();
 

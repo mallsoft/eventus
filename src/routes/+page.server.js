@@ -7,6 +7,8 @@ export const load = async ({ locals: { supabase } }) => {
 		.select('*, attending:rsvps(*)')
 		.order('start_time', { ascending: false });
 
+	console.log(events);
+
 	if (err) {
 		throw error(500, err);
 	}

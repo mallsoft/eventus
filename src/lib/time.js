@@ -12,22 +12,10 @@ incoming
 */
 
 export function tz(timeString, timeOffset) {
-	const date = new Date(timeString);
-	const offsetHours = Math.floor(timeOffset / 60);
-	const offsetMinutes = timeOffset % 60;
+	const d = new Date(timeString);
+	d.setMinutes(d.getMinutes() + timeOffset);
 
-	// Get the UTC time with the offset applied
-	date.setUTCHours(date.getUTCHours() - offsetHours);
-	date.setUTCMinutes(date.getUTCMinutes() - offsetMinutes);
-
-	const timestampz = date
-		.toISOString()
-		.replace(
-			'Z',
-			`+${offsetHours.toString().padStart(2, '0')}:${offsetMinutes.toString().padStart(2, '0')}`
-		);
-
-	return timestampz;
+	return dateTimeFormat(d); // "timestampz"
 }
 
 export const dateTimeFormat = (d) => {
