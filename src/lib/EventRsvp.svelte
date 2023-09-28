@@ -4,9 +4,10 @@
 	export let isAdmin;
 	export let event;
 
-	let isTooLate = new Date().getTime() >= new Date(event.rsvp_before).getTime();
-	let eventIsFull = event.pax >= event.max_pax;
-	let canRsvp = !isTooLate && !eventIsFull;
+	$: isTooLate = new Date().getTime() >= new Date(event.rsvp_before).getTime();
+	$: eventIsFull = event.pax >= event.max_pax;
+	$: canRsvp = !isTooLate && !eventIsFull;
+	$: isRegistered = event.attending?.length > 0;
 </script>
 
 <div>
@@ -17,9 +18,9 @@
 			use:enhance
 		>
 			<input type="hidden" value={event.id} name="eventId" />
-			<button disabled={!canRsvp} type="submit">
-				{#if canRsvp}
-					{event.attending?.length > 0 ? 'Unregister' : 'Register'}
+			<button disabled={!canRsvp && !isRegistered} type="submit">
+				{#if canRsvp || isRegistered}
+					{isRegistered ? 'Unregister' : 'Register'}
 				{:else}
 					Registering closed
 				{/if}

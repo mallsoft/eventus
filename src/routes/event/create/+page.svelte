@@ -7,6 +7,8 @@
 	const currentTime = dateTimeFormat(new Date());
 
 	let startTime = currentTime;
+	let endTime = currentTime;
+	$: if (new Date(endTime).getTime() < new Date(startTime).getTime()) endTime = startTime;
 </script>
 
 <h1>Create new event</h1>
@@ -67,7 +69,7 @@
 
 	<label>
 		<span>End time</span>
-		<input required type="datetime-local" name="endTime" value={currentTime} min={startTime} />
+		<input required type="datetime-local" name="endTime" value={endTime} min={startTime} />
 	</label>
 
 	<label>

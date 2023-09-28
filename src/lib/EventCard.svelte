@@ -13,6 +13,8 @@
 
 	$: range = dt.formatRange(new Date(start_time), new Date(end_time));
 	$: rsvp = dt.format(new Date(rsvp_before));
+
+	$: isTooLate = new Date().getTime() >= new Date(event.rsvp_before).getTime();
 </script>
 
 <article>
@@ -34,10 +36,12 @@
 			{range.toString()}
 		</p>
 		<!-- seats -->
-		<p>
-			<b>{max_pax - pax}</b> / <span>{max_pax}</span>
-			<span>Seats left</span>
-		</p>
+		{#if !isTooLate}
+			<p>
+				<b>{max_pax - pax}</b>
+				<span>Seat{max_pax - pax === 1 ? '' : 's'} remaining</span>
+			</p>
+		{/if}
 	</section>
 </article>
 
@@ -49,6 +53,9 @@
 	}
 
 	article {
+		display: flex;
+		flex-direction: column;
+
 		min-height: 12rem;
 		padding: 1rem;
 		color: var(--color-d);
@@ -90,6 +97,8 @@
 		display: flex;
 		flex-direction: column;
 		align-items: flex-end;
+
+		margin-top: auto;
 
 		gap: 0.5rem;
 	}

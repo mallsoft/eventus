@@ -8,9 +8,8 @@
 <svelte:head>
 	<title>Godzilla Events</title>
 </svelte:head>
-<!-- // ...todo, fix unregister many bug... -->
 
-<h1>Events</h1>
+<h1>{!data?.events.length ? 'No listed events.' : 'Current events'}</h1>
 <ol>
 	{#each data?.events as event}
 		<li>

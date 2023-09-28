@@ -7,9 +7,9 @@ export const load = async ({ parent }) => {
 	let { data: events, error: err } = await supabase
 		.from('events')
 		.select('*, attending:rsvps(*)')
-		.order('start_time', { ascending: false });
-	// attending = [{some user obj}] else []
-	// => is the requestee registered for this event
+		// .lt('end_time', "now() - interval '1 day'") // end date less than current time
+		.lt('publish_on', 'now()') // end date less than current time
+		.order('start_time', { ascending: true });
 
 	if (err) {
 		throw error(500, err);
