@@ -1,23 +1,21 @@
-/*
-
-incoming 
-  publish_on: '2023-09-26T23:07', 
-  rsvp_before: '2023-09-26T23:07',
-  start_time: '2023-09-26T23:07', 
-  end_time: '2023-09-26T23:07' 
-
-	...
-	shift x minutes... to utc...
-
-*/
-
+/**
+ * Make it so the datetime-local supports timezone offsets.
+ * @param {*} timeString datetime-local style time
+ * @param {*} timeOffset the intended timezone
+ * @returns {string}  "timestampz" that becomes utc'ish
+ */
 export function tz(timeString, timeOffset) {
 	const d = new Date(timeString);
 	d.setMinutes(d.getMinutes() + timeOffset);
 
-	return dateTimeFormat(d); // "timestampz"
+	return dateTimeFormat(d);
 }
 
+/**
+ * Create a string formatted to support the "datetime-local" input initial values
+ * @param {*} d date..
+ * @returns {string} `${year}-${month}-${day}T${hour}:${minute}`
+ */
 export const dateTimeFormat = (d) => {
 	//why isn't this a part of the datetime-local thing??? YYYY-MM-DDTHH:MM
 	const year = d.getFullYear();

@@ -1,6 +1,6 @@
 <script>
 	import EventCard from '$lib/EventCard.svelte';
-	import EventInteract from '$lib/EventInteract.svelte';
+	import EventRsvp from '$lib/EventRsvp.svelte';
 
 	export let data;
 </script>
@@ -8,13 +8,14 @@
 <svelte:head>
 	<title>Godzilla Events</title>
 </svelte:head>
+<!-- // ...todo, fix unregister many bug... -->
 
 <h1>Events</h1>
 <ol>
 	{#each data?.events as event}
 		<li>
 			<EventCard {event} />
-			<EventInteract {event} isAdmin={!!data?.event_admin} isLoggedIn={!!data?.session} />
+			<EventRsvp {event} isAdmin={!!data?.event_admin} isLoggedIn={!!data?.session} />
 		</li>
 	{/each}
 </ol>

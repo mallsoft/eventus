@@ -2,11 +2,6 @@ import { tz } from '$lib/time';
 import { validateEvent } from '$lib/server/validate';
 import { error, fail, redirect } from '@sveltejs/kit';
 
-/** @type {import('./$types').PageLoad} */
-export const load = async () => {
-	throw error(404, 'Not Found');
-};
-
 /** @type {import('./$types').Actions} */
 export const actions = {
 	createEvent: async ({ request, locals: { supabase, getSession } }) => {

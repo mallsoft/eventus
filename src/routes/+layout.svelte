@@ -1,6 +1,7 @@
 <script>
-	import { invalidate, invalidateAll } from '$app/navigation';
-	import Nav from '$lib/Nav.svelte';
+	import LogInOut from '$lib/LogInOut.svelte';
+	import { page } from '$app/stores';
+	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import '../app.css';
 
@@ -15,21 +16,47 @@
 			if (_session?.expires_at !== session?.expires_at) {
 				invalidate('supabase:auth');
 			}
-
-			invalidateAll(); // todo...
 		});
 
 		return () => subscription.unsubscribe();
 	});
 </script>
 
-<Nav {data} />
+<nav>
+	<div>
+		{#if data.event_admin && $page.url.pathname !== '/event/create'}
+			<a class="buttony" href="/event/create">Event Creation</a>
+		{/if}
+
+		{#if $page.url.pathname !== '/'}
+			<a class="buttony" href="/">Events</a>
+		{/if}
+	</div>
+	<div>
+		<LogInOut {data} />
+	</div>
+</nav>
 
 <main class="container">
 	<slot />
 </main>
 
 <style>
+	nav {
+		display: flex;
+		justify-content: space-between;
+
+		gap: 1rem;
+		width: 100%;
+		padding: 1rem;
+	}
+
+	div {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+	}
+
 	main {
 		box-sizing: border-box;
 

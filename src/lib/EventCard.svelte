@@ -15,8 +15,6 @@
 	$: rsvp = dt.format(new Date(rsvp_before));
 </script>
 
-{new Date(start_time)} <br /><br /><br /><br />
-{start_time}
 <article>
 	<h2>
 		{name}

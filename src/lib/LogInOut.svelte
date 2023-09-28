@@ -28,6 +28,7 @@
 				<span>logout</span>
 				{#if username}
 					<b>{username}</b>
+					{data.event_admin ? '*' : ''}
 				{/if}
 			{:else}
 				{logoutText}

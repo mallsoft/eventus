@@ -7,14 +7,15 @@
 
 <nav>
 	<div>
-		{#if data.event_admin && $page.url.pathname !== '/new-event'}
-			<a class="buttony" href="/new-event">Event Creation</a>
+		{#if data.event_admin && $page.url.pathname !== '/event/create'}
+			<a class="buttony" href="/event/create">Event Creation</a>
 		{/if}
 
 		{#if $page.url.pathname !== '/'}
 			<a class="buttony" href="/">Events</a>
 		{/if}
 	</div>
+
 	<div>
 		<LogInOut {data} />
 	</div>
@@ -28,5 +29,11 @@
 		gap: 1rem;
 		width: 100%;
 		padding: 1rem;
+	}
+
+	div {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
 	}
 </style>

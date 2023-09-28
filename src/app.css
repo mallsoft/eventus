@@ -58,6 +58,7 @@ textarea {
 
 .buttony {
 	display: block;
+	max-width: max-content;
 }
 .buttony:not(:focus, :hover) {
 	text-decoration: none;
