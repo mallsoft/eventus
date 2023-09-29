@@ -1,6 +1,6 @@
 <script>
-	import EventCard from '$lib/EventCard.svelte';
-	import EventRsvp from '$lib/EventRsvp.svelte';
+	import EventCard from './_fragments/EventCard.svelte';
+	import EventRsvp from './_fragments/EventRsvp.svelte';
 
 	export let data;
 </script>

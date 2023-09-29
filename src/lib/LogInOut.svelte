@@ -1,37 +1,26 @@
 <script>
 	import { enhance } from '$app/forms';
-	export let data;
-
-	export let loginText = '';
-	export let logoutText = '';
+	import { page } from '$app/stores';
 </script>
 
-{#if !data.session}
+{#if !$page.data?.session}
 	<!-- log in -->
 
 	<form action="/?/login" method="POST">
-		<button type="submit">
-			{#if loginText}
-				{loginText}
-			{:else}
-				Login
-			{/if}
-		</button>
+		<button type="submit"> Login </button>
 	</form>
 {:else}
 	<!-- log out -->
 
-	{@const username = data?.session?.user?.user_metadata?.user_name ?? ''}
+	{@const username = $page.data.session?.user?.user_metadata?.user_name ?? ''}
 	<form action="/?/logout" method="POST" use:enhance>
 		<button type="submit" class="contrast outline">
-			{#if !logoutText}
-				<span>logout</span>
-				{#if username}
-					<b>{username}</b>
-					{data.event_admin ? '*' : ''}
-				{/if}
-			{:else}
-				{logoutText}
+			<span>logout</span>
+			{#if username}
+				<b>{username}</b>
+				<!-- if admin -->
+
+				{$page.data.event_admin ? '*' : ''}
 			{/if}
 		</button>
 	</form>

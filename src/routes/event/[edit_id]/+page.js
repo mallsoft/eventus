@@ -19,5 +19,5 @@ export const load = async ({ parent, params: { edit_id } }) => {
 		throw error(404, 'Not Found');
 	}
 
-	return { event };
+	return { event_edit: event };
 };

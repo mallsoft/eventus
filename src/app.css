@@ -60,6 +60,7 @@ textarea {
 	display: block;
 	max-width: max-content;
 }
+a:not(:focus, :hover),
 .buttony:not(:focus, :hover) {
 	text-decoration: none;
 }
@@ -112,4 +113,11 @@ button:disabled {
 
 :is(.buttony, button):active {
 	color: var(--color-d);
+}
+
+/* table default styling */
+table {
+	padding: 1rem;
+	border: 1px solid var(--color-c);
+	border-radius: 10px;
 }

@@ -9,8 +9,8 @@
 	$: isRegistered = event.attending?.length > 0;
 </script>
 
-<div>
-	{#if isLoggedIn}
+{#if isLoggedIn}
+	<div>
 		<form
 			action="?/{event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
 			method="post"
@@ -25,8 +25,8 @@
 				{/if}
 			</button>
 		</form>
-	{/if}
-</div>
+	</div>
+{/if}
 
 <style>
 	div {

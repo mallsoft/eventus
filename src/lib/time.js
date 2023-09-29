@@ -17,6 +17,7 @@ export function tz(timeString, timeOffset) {
  * @returns {string} `${year}-${month}-${day}T${hour}:${minute}`
  */
 export const dateTimeFormat = (d) => {
+	d = d ? new Date(d) : new Date();
 	//why isn't this a part of the datetime-local thing??? YYYY-MM-DDTHH:MM
 	const year = d.getFullYear();
 	const month = String(d.getMonth() + 1).padStart(2, '0'); // Month is 0-based, so add 1 and pad with '0' if needed
@@ -24,4 +25,22 @@ export const dateTimeFormat = (d) => {
 	const hour = String(d.getHours()).padStart(2, '0');
 	const minute = String(d.getMinutes()).padStart(2, '0');
 	return `${year}-${month}-${day}T${hour}:${minute}`;
+};
+
+/**
+ * Convert to timezoned date string
+ * @param {*} tz - time stamb
+ */
+export const d = (tz) => {
+	const opts = {
+		year: '2-digit',
+		month: 'numeric',
+		day: 'numeric',
+		hour: 'numeric',
+		minute: 'numeric'
+	};
+
+	const dt = new Intl.DateTimeFormat(undefined, opts);
+
+	return dt.format(new Date(tz)).toString();
 };
