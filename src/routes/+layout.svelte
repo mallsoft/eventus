@@ -25,7 +25,7 @@
 <nav>
 	<div>
 		{#if data.event_admin && $page.url.pathname !== '/event/create'}
-			<a class="buttony" href="/event/create">Event Creation</a>
+			<a class="buttony" href="/event">Edit</a>
 		{/if}
 
 		{#if $page.url.pathname !== '/'}

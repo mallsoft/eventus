@@ -1,7 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
 	export let isLoggedIn;
-	export let isAdmin;
 	export let event;
 
 	$: isTooLate = new Date().getTime() >= new Date(event.rsvp_before).getTime();
@@ -26,9 +25,6 @@
 				{/if}
 			</button>
 		</form>
-	{/if}
-	{#if isAdmin}
-		<a class="buttony" href="/event/{event.id}">Edit</a>
 	{/if}
 </div>
 
