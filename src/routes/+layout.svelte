@@ -44,9 +44,7 @@
 	main > :global(h1) {
 		background-color: var(--color-c);
 		color: var(--color-a);
-
 		font-size: 5rem;
-
 		padding: 1rem 2rem;
 		margin-bottom: 4rem;
 	}
@@ -54,6 +52,11 @@
 	@media (width < 610px) {
 		main > :global(h1) {
 			font-size: 3rem;
+		}
+	}
+	@media (width < 410px) {
+		main > :global(h1) {
+			font-size: 2rem;
 		}
 	}
 </style>
