@@ -3,35 +3,40 @@
 	import LogInOut from '../../lib/LogInOut.svelte';
 </script>
 
-<nav>
-	<div>
+<header>
+	<nav>
 		{#if $page.url.pathname !== '/'}
-			<a class="buttony" href="/">Events</a>
+			<a class="buttony" href="/">Landing page</a>
 		{/if}
 
-		{#if $page.data.event_admin}
+		{#if $page.data.event_admin && $page.url.pathname !== '/event'}
 			<a class="buttony" href="/event">Event edit</a>
 		{/if}
-	</div>
-
-	<div>
-		<LogInOut />
-	</div>
-</nav>
+	</nav>
+	<LogInOut />
+</header>
 
 <style>
-	nav {
+	header {
 		display: flex;
 		justify-content: space-between;
 
-		gap: 1rem;
+		flex-wrap: wrap-reverse;
+
+		gap: 0.5rem;
 		width: 100%;
 		padding: 1rem;
 	}
 
-	div {
+	nav {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 1rem;
+		gap: 0.5rem;
+	}
+
+	nav a {
+		display: flex;
+		height: 100%;
+		align-items: center;
 	}
 </style>

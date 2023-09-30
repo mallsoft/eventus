@@ -101,6 +101,8 @@
 		grid-template-columns: repeat(auto-fit, max(calc(50% - 1rem), 24ch));
 		width: 100%;
 		justify-content: center;
+
+		margin: 1rem 0;
 	}
 
 	button {

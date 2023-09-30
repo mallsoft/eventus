@@ -56,6 +56,10 @@ textarea {
 	border: none;
 }
 
+a {
+	color: inherit;
+}
+
 .buttony {
 	display: block;
 	max-width: max-content;

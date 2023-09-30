@@ -2,7 +2,7 @@
 	import { invalidate } from '$app/navigation';
 	import { onMount } from 'svelte';
 	import '../app.css';
-	import Nav from './_fragments/Nav.svelte';
+	import Header from './_fragments/Header.svelte';
 
 	export let data;
 
@@ -21,7 +21,7 @@
 	});
 </script>
 
-<Nav />
+<Header />
 
 <main class="container">
 	<slot />

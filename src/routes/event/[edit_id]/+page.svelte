@@ -3,11 +3,12 @@
 	import EventForm from '../_fragments/EventForm.svelte';
 
 	export let data;
-	$: ({ description, end_time, max_pax, name, publish_on, rsvp_before, start_time } =
+	$: ({ id, description, end_time, max_pax, name, publish_on, rsvp_before, start_time } =
 		data.event_edit[0]);
 </script>
 
-<h1>Edit <i>{name}</i></h1>
+<h1><i>{name}</i></h1>
+<h2>Edit Event id:{id}</h2>
 
 <EventForm
 	{name}
@@ -19,3 +20,28 @@
 	rsvpTime={dateTimeFormat(rsvp_before)}
 	edit
 />
+<div>
+	<form action="/event/{id}/?/eventDelete" method="post">
+		<input type="text" pattern={name} required placeholder="event name" />
+		<!-- <input type="hidden" value={id} /> -->
+		<button>Delete ✖</button>
+	</form>
+</div>
+
+<style>
+	div {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		margin: 2rem 0;
+	}
+	form {
+		display: flex;
+		justify-content: space-between;
+		margin-left: auto;
+	}
+	input {
+		display: block;
+	}
+</style>

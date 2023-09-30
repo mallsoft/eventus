@@ -52,5 +52,17 @@ export const actions = {
 		}
 
 		throw redirect(303, '/');
+	},
+	eventDelete: async ({ locals: { supabase }, params: { edit_id } }) => {
+		console.log('DELETE EVENT', edit_id);
+
+		const { error } = await supabase.from('events').delete().eq('id', edit_id);
+
+		if (error) {
+			console.error(error);
+			return fail(500, { message: 'Server error. Try again later.' });
+		}
+
+		throw redirect(303, '/');
 	}
 };
