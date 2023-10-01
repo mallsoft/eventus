@@ -6,7 +6,7 @@
 <header>
 	<nav>
 		{#if $page.url.pathname !== '/'}
-			<a class="buttony" href="/">Landing page</a>
+			<a class="buttony" href="/">Index</a>
 		{/if}
 
 		{#if $page.data.event_admin && $page.url.pathname !== '/event'}

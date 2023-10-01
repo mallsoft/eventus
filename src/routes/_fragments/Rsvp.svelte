@@ -1,6 +1,6 @@
 <script>
 	import { enhance } from '$app/forms';
-	export let isLoggedIn;
+	import { page } from '$app/stores';
 	export let event;
 
 	$: isTooLate = new Date().getTime() >= new Date(event.rsvp_before).getTime();
@@ -9,7 +9,7 @@
 	$: isRegistered = event.attending?.length > 0;
 </script>
 
-{#if isLoggedIn}
+{#if $page.data?.session}
 	<div>
 		<form
 			action="?/{event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"

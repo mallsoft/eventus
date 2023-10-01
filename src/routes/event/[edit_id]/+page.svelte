@@ -3,12 +3,12 @@
 	import EventForm from '../_fragments/EventForm.svelte';
 
 	export let data;
-	$: ({ id, description, end_time, max_pax, name, publish_on, rsvp_before, start_time } =
+	$: ({ id, description, end_time, max_pax, pax, name, publish_on, rsvp_before, start_time } =
 		data.event_edit[0]);
 </script>
 
-<h1><i>{name}</i></h1>
-<h2>Edit Event id:{id}</h2>
+<h1>Edit Event</h1>
+<h2>{name} ({pax}/{max_pax})</h2>
 
 <EventForm
 	{name}

@@ -114,12 +114,12 @@
 		display: flex;
 		flex-direction: column;
 		font-weight: bold;
-		color: var(--color-d);
+		color: var(--color-b);
 		gap: 0.5rem;
 	}
 
 	label:focus-within {
-		color: var(--color-b);
+		color: var(--color-d);
 	}
 
 	textarea {

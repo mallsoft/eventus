@@ -42,7 +42,7 @@
 	}
 
 	main > :global(h1) {
-		background-color: var(--color-c);
+		background-color: var(--color-b);
 		color: var(--color-a);
 		font-size: 5rem;
 		padding: 1rem 2rem;

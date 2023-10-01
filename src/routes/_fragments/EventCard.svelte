@@ -1,4 +1,6 @@
 <script>
+	import Rsvp from './Rsvp.svelte';
+
 	export let event;
 	$: ({ name, description, start_time, end_time, max_pax, pax, rsvp_before } = event);
 
@@ -24,15 +26,19 @@
 
 	<p>
 		{description}
-
-		<br />
-		<em>rsvp before {rsvp}</em>
 	</p>
 
 	<section class="chips">
+		<!-- seats -->
+		{#if !isTooLate && start_time !== rsvp_before}
+			<p>
+				<b>Register before</b>
+				<span>{rsvp}</span>
+			</p>
+		{/if}
 		<!-- event time -->
 		<p>
-			<span>ET</span>
+			<span>When</span>
 			{range.toString()}
 		</p>
 		<!-- seats -->
@@ -43,12 +49,14 @@
 			</p>
 		{/if}
 	</section>
+
+	<Rsvp {event} />
 </article>
 
 <style>
 	h2 {
 		font-size: 2.5rem;
-		color: var(--color-e);
+		color: var(--color-b);
 		margin-bottom: 0.5rem;
 	}
 
@@ -57,10 +65,15 @@
 		flex-direction: column;
 
 		min-height: 12rem;
-		padding: 1rem;
-		color: var(--color-d);
+		padding: 1.5rem;
 
 		position: relative;
+	}
+
+	@media (width < 710px) {
+		article {
+			padding: 1rem;
+		}
 	}
 
 	article::before,
@@ -70,8 +83,9 @@
 		width: 1rem;
 		height: 1rem;
 		border: 0.125rem solid var(--color-c);
-		transition: transform 0.2s;
+		transition: all 0.2s;
 	}
+
 	article::before {
 		bottom: 0;
 		right: 0;
@@ -88,15 +102,15 @@
 	article > p {
 		font-size: 1.4rem;
 		margin-bottom: 1rem;
-	}
-	article > p em {
-		font-size: 1rem;
+
+		color: var(--color-e);
 	}
 
 	.chips {
 		display: flex;
-		flex-direction: column;
-		align-items: flex-end;
+		flex-wrap: wrap;
+
+		justify-content: flex-end;
 
 		margin-top: auto;
 
@@ -104,7 +118,7 @@
 	}
 	.chips > p {
 		color: var(--color-a);
-		background-color: var(--color-e);
+		background-color: var(--color-b);
 		max-width: max-content;
 
 		border-radius: 4px;

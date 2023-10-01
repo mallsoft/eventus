@@ -1,12 +1,9 @@
 :root {
-	--color-a: #000a16;
-	--color-b: #ffffff;
-	--color-c: #3700ff;
-	--color-d: #84eeff;
-	--color-e: #12ff90;
-
-	--err-text: #ff6f6f;
-	--err-bg: #423030;
+	--color-a: #00013c;
+	--color-b: #fff;
+	--color-c: #0004ff;
+	--color-d: #b7fffb;
+	--color-e: #12ff7a;
 
 	---colwidth: 800px;
 }
@@ -107,7 +104,7 @@ textarea {
 }
 
 :is(.buttony, button):not(:active, :disabled):hover {
-	color: var(--color-b);
+	color: var(--color-e);
 }
 
 button:disabled {
@@ -117,6 +114,8 @@ button:disabled {
 
 :is(.buttony, button):active {
 	color: var(--color-d);
+	transform-origin: center;
+	transform: scale(0.98);
 }
 
 /* table default styling */

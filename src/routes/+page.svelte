@@ -1,6 +1,6 @@
 <script>
 	import EventCard from './_fragments/EventCard.svelte';
-	import EventRsvp from './_fragments/EventRsvp.svelte';
+	import Rsvp from './_fragments/Rsvp.svelte';
 
 	export let data;
 </script>
@@ -14,7 +14,6 @@
 	{#each data?.events as event}
 		<li>
 			<EventCard {event} />
-			<EventRsvp {event} isAdmin={!!data?.event_admin} isLoggedIn={!!data?.session} />
 		</li>
 	{/each}
 </ol>
