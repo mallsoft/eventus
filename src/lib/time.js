@@ -4,7 +4,7 @@
  * @param {*} timeOffset the intended timezone
  * @returns {string}  "timestampz" that becomes utc'ish
  */
-export function tz(timeString, timeOffset) {
+export function tz(timeString, timeOffset = new Date().getTimezoneOffset()) {
 	const d = new Date(timeString);
 	d.setMinutes(d.getMinutes() + timeOffset);
 

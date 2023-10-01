@@ -1,6 +1,5 @@
 <script>
 	import EventCard from './_fragments/EventCard.svelte';
-	import Rsvp from './_fragments/Rsvp.svelte';
 
 	export let data;
 </script>
