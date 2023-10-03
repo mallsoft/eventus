@@ -2,10 +2,11 @@
 	--color-a: #00013c;
 	--color-b: #fff;
 	--color-c: #0004ff;
-	--color-d: #b7fffb;
-	--color-e: #12ff7a;
+	--color-d: #12ff7a;
 
 	---colwidth: 800px;
+	--err-bg: #ffa1a1;
+	--err-text: #2e2e2e;
 }
 
 html {
@@ -71,7 +72,7 @@ button,
 	box-sizing: border-box;
 	font-weight: bold;
 	background-color: var(--color-c);
-	color: var(--color-d);
+	color: var(--color-b);
 
 	padding: 1rem;
 	font-size: 1.5rem;
@@ -104,7 +105,7 @@ textarea {
 }
 
 :is(.buttony, button):not(:active, :disabled):hover {
-	color: var(--color-e);
+	color: var(--color-d);
 }
 
 button:disabled {

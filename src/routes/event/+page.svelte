@@ -51,6 +51,6 @@
 	}
 
 	li:is(:hover, :focus-within) h2 {
-		color: var(--color-e);
+		color: var(--color-d);
 	}
 </style>

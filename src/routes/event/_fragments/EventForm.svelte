@@ -38,21 +38,24 @@
 	</div>
 {/if}
 
-<form action={edit ? '?/editEvent' : '?/createEvent'} method="POST" use:enhance>
+<form action={edit ? '?/editEvent' : '?/createEvent'} method="POST" autocomplete="off" use:enhance>
 	<label>
 		<span>Name</span>
-		<input required type="text" name="name" value={name} />
+		<input placeholder="Event name" required type="text" name="name" value={name} />
 	</label>
 
 	<label style:grid-row="span 2">
 		<span>Description</span>
-		<textarea required type="text" name="description">{description}</textarea>
+		<textarea placeholder="Event description" required type="text" name="description"
+			>{description}</textarea
+		>
 	</label>
 
 	<label>
 		<span>Max attendees</span>
 		<input
 			required
+			placeholder="0 - 1000000"
 			type="number"
 			style="appearance: textfield;"
 			min="1"
@@ -105,6 +108,11 @@
 		margin: 1rem 0;
 	}
 
+	input:invalid:not(:placeholder-shown) {
+		background-color: var(--err-bg);
+		color: var(--err-text);
+	}
+
 	button {
 		margin-top: 1rem;
 		grid-column: 1/-1;
@@ -130,7 +138,7 @@
 	.errorbois {
 		padding: 1rem;
 		margin: 1rem 0;
-		background-color: rgb(255, 161, 161);
-		color: rgb(46, 46, 46);
+		background-color: var(--err-bg);
+		color: var(--err-text);
 	}
 </style>

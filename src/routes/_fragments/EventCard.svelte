@@ -104,7 +104,7 @@
 		font-size: 1.4rem;
 		margin-bottom: 1rem;
 
-		color: var(--color-e);
+		color: var(--color-d);
 	}
 
 	.chips {

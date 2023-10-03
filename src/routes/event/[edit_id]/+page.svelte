@@ -36,4 +36,11 @@
 	input {
 		display: block;
 	}
+
+	input[type='text']:invalid ~ button {
+		background-color: var(--err-bg);
+		color: var(--err-text);
+		opacity: 0.7;
+		pointer-events: none;
+	}
 </style>
