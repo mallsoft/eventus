@@ -5,7 +5,6 @@ export const actions = {
 	eventRegister: async ({ request, locals: { supabase } }) => {
 		const formData = await request.formData();
 		const event_id = formData.get('eventId');
-		console.log('REGISTER => event id:' + event_id);
 
 		const { error } = await supabase.rpc('register_to_event', {
 			event_id
@@ -21,7 +20,6 @@ export const actions = {
 	eventUnregister: async ({ request, locals: { supabase } }) => {
 		const formData = await request.formData();
 		const event_id = formData.get('eventId');
-		console.log('UNREGISTER => event id:' + event_id);
 
 		const { error } = await supabase.rpc('unregister_from_event', { event_id });
 
