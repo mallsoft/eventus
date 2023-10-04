@@ -4,7 +4,7 @@
 </script>
 
 {#if !data.session}
-	{#if !form.linkSent}
+	{#if !form?.linkSent}
 		<h1>Log in with...</h1>
 
 		<section>
@@ -23,7 +23,8 @@
 			</form>
 		</section>
 	{:else}
-		<h1>Magic link sendt!</h1>
+		<h1>Magic link sent!</h1>
+		<h2>Check your inbox 👀</h2>
 	{/if}
 {:else}
 	<h1>Account</h1>
