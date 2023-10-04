@@ -1,7 +1,21 @@
 <script>
+	import { onMount } from 'svelte';
 	import EventCard from './_fragments/EventCard.svelte';
+	import { invalidateAll } from '$app/navigation';
 
 	export let data;
+
+	$: ({ supabase } = data);
+	onMount(() => {
+		const events = supabase
+			.channel('event-channel')
+			.on('postgres_changes', { event: '*', schema: 'public', table: 'events' }, () => {
+				invalidateAll();
+			})
+			.subscribe();
+
+		return () => events.unsubscribe();
+	});
 </script>
 
 <svelte:head>

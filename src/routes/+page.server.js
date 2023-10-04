@@ -58,5 +58,25 @@ export const actions = {
 		const { origin } = new URL(request.url);
 
 		throw redirect(303, origin);
+	},
+	loginMagic: async ({ request, locals: { supabase } }) => {
+		const { origin } = new URL(request.url);
+
+		const formData = await request.formData();
+		const email = formData.get('email');
+
+		const { data, error } = await supabase.auth.signInWithOtp({
+			email: email,
+			options: {
+				redirectTo: origin
+			}
+		});
+
+		if (error) {
+			console.log(error);
+			return fail(500, { message: 'Server error. Try again later.' });
+		}
+
+		throw redirect(303, data.url);
 	}
 };
