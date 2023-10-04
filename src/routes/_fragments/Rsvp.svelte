@@ -26,6 +26,8 @@
 			</button>
 		</form>
 	</div>
+{:else}
+	<a class="buttony" href="/account">Log in to register</a>
 {/if}
 
 <style>

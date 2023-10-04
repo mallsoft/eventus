@@ -28,20 +28,27 @@ export const actions = {
 
 		throw redirect(303, data.url);
 	},
-	loginFace: async ({ request, locals: { supabase } }) => {
+	loginMagicLink: async ({ request, locals: { supabase } }) => {
+		const email = (await request.formData()).get('email');
+
+		if (!email) {
+			return fail(400, { message: 'Email missing.' });
+		}
+
 		const { origin } = new URL(request.url);
-		const { data, error } = await supabase.auth.signInWithOAuth({
-			provider: 'facebook',
+
+		const { error } = await supabase.auth.signInWithOtp({
+			email,
 			options: {
-				redirectTo: origin
+				emailRedirectTo: origin
 			}
 		});
-
+		// ...
 		if (error) {
 			console.log(error);
 			return fail(500, { message: 'Server error. Try again later.' });
 		}
 
-		throw redirect(303, data.url);
+		return { success: true };
 	}
 };
