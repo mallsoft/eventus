@@ -49,6 +49,6 @@ export const actions = {
 			return fail(500, { message: 'Server error. Try again later.' });
 		}
 
-		return { success: true };
+		return { linkSent: true };
 	}
 };

@@ -1,25 +1,30 @@
 <script>
 	export let data;
+	export let form;
 </script>
 
 {#if !data.session}
-	<h1>Log in with...</h1>
+	{#if !form.linkSent}
+		<h1>Log in with...</h1>
 
-	<section>
-		<h2>Email</h2>
+		<section>
+			<h2>Email</h2>
 
-		<!-- magic link -->
-		<form class="magic" action="?/loginMagicLink" method="POST">
-			<input required type="email" name="email" placeholder="email@example.com" />
-			<button type="submit">Go!</button>
-		</form>
+			<!-- magic link -->
+			<form class="magic" action="?/loginMagicLink" method="POST">
+				<input required type="email" name="email" placeholder="email@example.com" />
+				<button type="submit">Go!</button>
+			</form>
 
-		<h2>Or</h2>
-		<!-- github -->
-		<form action="?/loginGithub" method="POST">
-			<button type="submit">Github</button>
-		</form>
-	</section>
+			<h2>Or</h2>
+			<!-- github -->
+			<form action="?/loginGithub" method="POST">
+				<button type="submit">Github</button>
+			</form>
+		</section>
+	{:else}
+		<h1>Magic link sendt!</h1>
+	{/if}
 {:else}
 	<h1>Account</h1>
 	<h2>Logged in as</h2>
