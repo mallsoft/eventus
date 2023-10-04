@@ -6,14 +6,16 @@
 {#if !$page.data?.session}
 	<!-- log in -->
 
-	<form action="/?/login" method="POST">
+	<a class="buttony" href="/account">Log in</a>
+
+	<!-- <form action="/?/login" method="POST">
 		<button type="submit"> Login </button>
-	</form>
+	</form> -->
 {:else}
 	<!-- log out -->
 
 	{@const username = $page.data.session?.user?.user_metadata?.user_name ?? ''}
-	<form action="/?/logout" method="POST" use:enhance>
+	<form action="/account/?/logout" method="POST" use:enhance>
 		<button type="submit" class="contrast outline">
 			<span>logout</span>
 			{#if username}
