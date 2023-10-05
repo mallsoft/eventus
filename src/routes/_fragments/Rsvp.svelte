@@ -28,7 +28,8 @@
 		</form>
 	</div>
 {:else}
-	<p>You need to log in to register for events</p>
+	<br />
+	<a href="/account">You need to log in to register for events</a>
 {/if}
 
 <style>
