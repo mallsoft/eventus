@@ -35,8 +35,13 @@
 			</div>
 		</section>
 	{:else}
-		<h1>Magic link sent!</h1>
+		<h1>Code sent!</h1>
 		<h2>Check your inbox 👀</h2>
+		<form action="?/verifyOTP" method="post">
+			<input type="hidden" name="email" value={form?.email} />
+			<input required type="text" name="otp" placeholder="OTP Code!" />
+			<button type="submit">Use code</button>
+		</form>
 	{/if}
 {:else}
 	<h1>Account</h1>
