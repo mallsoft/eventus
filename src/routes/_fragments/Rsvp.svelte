@@ -15,6 +15,7 @@
 			action="?/{event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
 			method="post"
 			use:enhance
+			class:isRegistered
 		>
 			<input type="hidden" value={event.id} name="eventId" />
 			<button disabled={!canRsvp && !isRegistered} type="submit">
@@ -35,5 +36,12 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
+	}
+	.isRegistered {
+		margin-left: auto;
+	}
+	.isRegistered button {
+		color: var(--color-a);
+		background-color: var(--color-b);
 	}
 </style>
