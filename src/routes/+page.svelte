@@ -19,7 +19,7 @@
 </script>
 
 <svelte:head>
-	<title>Godzilla Events</title>
+	<title>DNB Events</title>
 </svelte:head>
 
 <h1>{!data?.events.length ? 'No listed events.' : 'Current events'}</h1>
