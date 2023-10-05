@@ -2,7 +2,8 @@
 	import Rsvp from './Rsvp.svelte';
 
 	export let event;
-	$: ({ name, description, start_time, end_time, max_pax, pax, rsvp_before } = event);
+	$: ({ name, description, start_time, end_time, max_pax, pax, rsvp_before, attending } = event);
+	$: isRegistered = attending?.length > 0;
 
 	const opts = {
 		year: '2-digit',
@@ -24,17 +25,20 @@
 		{name}
 	</h2>
 
-	<p>
+	<p class="desc">
 		{description}
 	</p>
 
 	<section class="chips">
 		<!-- seats -->
-		{#if !isTooLate && start_time !== rsvp_before}
+		{#if !isTooLate && start_time !== rsvp_before && !isRegistered}
 			<p>
 				<b>Register before</b>
 				<span>{rsvp}</span>
 			</p>
+		{/if}
+		{#if isRegistered}
+			<p><b>You are registered!</b></p>
 		{/if}
 		<!-- event time -->
 		<p>
@@ -131,5 +135,9 @@
 	}
 	.chips > p * {
 		font: inherit;
+	}
+
+	.desc {
+		white-space: pre-wrap;
 	}
 </style>
