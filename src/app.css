@@ -119,10 +119,3 @@ button:disabled {
 	transform-origin: center;
 	transform: scale(0.98);
 }
-
-/* table default styling */
-table {
-	padding: 1rem;
-	border: 1px solid var(--color-c);
-	border-radius: 10px;
-}

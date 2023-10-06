@@ -18,7 +18,7 @@
 			class:isRegistered
 		>
 			<input type="hidden" value={event.id} name="eventId" />
-			<button disabled={!canRsvp && !isRegistered} type="submit">
+			<button class:b2={isRegistered} disabled={!canRsvp && !isRegistered} type="submit">
 				{#if canRsvp || isRegistered}
 					{isRegistered ? 'Unregister' : 'Register'}
 				{:else}
@@ -28,7 +28,6 @@
 		</form>
 	</div>
 {:else}
-	<br />
 	<a href="/account">You need to log in to register for events</a>
 {/if}
 
@@ -42,7 +41,10 @@
 		margin-left: auto;
 	}
 	.isRegistered button {
-		color: var(--color-a);
-		background-color: var(--color-b);
+		opacity: 0.75;
+		transition: opacity 0.1s;
+	}
+	.isRegistered button:is(:hover, :active, :focus) {
+		opacity: 1;
 	}
 </style>

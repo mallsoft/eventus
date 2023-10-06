@@ -29,30 +29,30 @@
 		{description}
 	</p>
 
-	<section class="chips">
+	<ul class="chips">
 		<!-- seats -->
 		{#if !isTooLate && start_time !== rsvp_before && !isRegistered}
-			<p>
+			<li>
 				<b>Register before</b>
 				<span>{rsvp}</span>
-			</p>
+			</li>
 		{/if}
 		{#if isRegistered}
-			<p><b>You are registered!</b></p>
+			<li><b>You are registered!</b></li>
 		{/if}
 		<!-- event time -->
-		<p>
+		<li>
 			<span>When</span>
 			{range.toString()}
-		</p>
+		</li>
 		<!-- seats -->
 		{#if !isTooLate}
-			<p>
+			<li>
 				<b>{max_pax - pax}</b>
 				<span>Seat{max_pax - pax === 1 ? '' : 's'} remaining</span>
-			</p>
+			</li>
 		{/if}
-	</section>
+	</ul>
 
 	<Rsvp {event} />
 </article>
@@ -106,7 +106,6 @@
 
 	article > p {
 		font-size: 1.4rem;
-		margin-bottom: 1rem;
 
 		color: var(--color-d);
 	}
@@ -121,7 +120,7 @@
 
 		gap: 0.5rem;
 	}
-	.chips > p {
+	.chips > li {
 		color: var(--color-a);
 		background-color: var(--color-b);
 		max-width: max-content;
@@ -131,13 +130,14 @@
 
 		font-weight: 600;
 		font-style: normal;
-		font-size: 0.95rem;
 	}
-	.chips > p * {
+	.chips > li * {
 		font: inherit;
 	}
 
 	.desc {
 		white-space: pre-wrap;
+		margin-bottom: 2rem;
+		margin-top: 1rem;
 	}
 </style>
