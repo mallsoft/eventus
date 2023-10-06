@@ -1,8 +1,9 @@
 :root {
-	--color-a: #00013c;
-	--color-b: #fff;
-	--color-c: #0004ff;
-	--color-d: #12ff7a;
+	--color-b: #ffffff;
+	--color-a: #007272;
+
+	--color-c: #00343e;
+	--color-d: #e9f8f4;
 
 	---colwidth: 800px;
 	--err-bg: #ffa1a1;
@@ -44,8 +45,8 @@ li {
 input,
 button,
 textarea {
-	color: black;
-	background-color: white;
+	color: var(--color-b);
+	background-color: var(--color-c);
 
 	font: inherit;
 	font-size: 1.125rem;
