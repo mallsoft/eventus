@@ -9,7 +9,7 @@
 
 		<section>
 			<div>
-				<h2>Email (magic link)</h2>
+				<h2>One time code from email</h2>
 
 				<!-- magic link -->
 				<form class="magic" action="?/loginMagicLink" method="POST">
@@ -19,7 +19,7 @@
 			</div>
 
 			<div>
-				<h2>Or preferably</h2>
+				<h2>...or preferably</h2>
 				<!-- github -->
 				<form action="?/loginGithub" method="POST">
 					<button type="submit"
