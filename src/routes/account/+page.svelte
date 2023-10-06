@@ -35,10 +35,11 @@
 			</div>
 		</section>
 	{:else}
-		<h1>Code sent!</h1>
+		<h1>Code sent to ({form?.email})</h1>
 		<h2>Check your inbox 👀</h2>
 		<form action="?/verifyOTP" method="post">
 			<input type="hidden" name="email" value={form?.email} />
+			<!-- oninput="this.value = this.value.replace(/^[^0-9]/,'')" -->
 			<input required type="text" name="otp" placeholder="OTP Code!" />
 			<button type="submit">Use code</button>
 		</form>
@@ -88,6 +89,11 @@
 	div {
 		display: flex;
 		flex-direction: column;
+		gap: 1rem;
+	}
+
+	[action='?/verifyOTP'] {
+		display: flex;
 		gap: 1rem;
 	}
 </style>
