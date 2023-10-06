@@ -18,7 +18,7 @@
 			class:isRegistered
 		>
 			<input type="hidden" value={event.id} name="eventId" />
-			<button class:b2={isRegistered} disabled={!canRsvp && !isRegistered} type="submit">
+			<button disabled={!canRsvp && !isRegistered} type="submit">
 				{#if canRsvp || isRegistered}
 					{isRegistered ? 'Unregister' : 'Register'}
 				{:else}
