@@ -6,7 +6,7 @@ export const GET = async ({ request, locals: { supabase } }) => {
 	const email = data.get('email');
 
 	if (token) {
-		const { error } = await supabase.auth.verifyOtp({ email, token, type: 'email' });
+		const { error } = await supabase.auth.verifyOtp({ email, token: token.trim(), type: 'email' });
 		if (!error) {
 			throw redirect(303, '/');
 		}
