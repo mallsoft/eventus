@@ -10,23 +10,25 @@
 </script>
 
 {#if $page.data?.session}
-	<div>
-		<form
-			action="?/{event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
-			method="post"
-			use:enhance
-			class:isRegistered
-		>
-			<input type="hidden" value={event.id} name="eventId" />
-			<button disabled={!canRsvp && !isRegistered} type="submit">
-				{#if canRsvp || isRegistered}
-					{isRegistered ? 'Unregister' : 'Register'}
-				{:else}
-					Registering closed
-				{/if}
-			</button>
-		</form>
-	</div>
+	{#if canRsvp}
+		<div>
+			<form
+				action="?/{event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
+				method="post"
+				use:enhance
+				class:isRegistered
+			>
+				<input type="hidden" value={event.id} name="eventId" />
+				<button disabled={!canRsvp && !isRegistered} type="submit">
+					{#if canRsvp || isRegistered}
+						{isRegistered ? 'Unregister' : 'Register'}
+					{:else}
+						Registering closed
+					{/if}
+				</button>
+			</form>
+		</div>
+	{/if}
 {:else}
 	<a href="/account">You need to log in to register for events</a>
 {/if}
