@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import EventCard from './_fragments/EventCard.svelte';
 	import { invalidateAll } from '$app/navigation';
 
 	export let data;
@@ -24,9 +23,9 @@
 
 <h1>{!data?.events.length ? 'No listed events.' : 'Current events'}</h1>
 <ol>
-	{#each data?.events as event}
+	{#each data?.events as { id, name }}
 		<li>
-			<EventCard {event} />
+			<a href="/e/{id}">{name}</a>
 		</li>
 	{/each}
 </ol>
