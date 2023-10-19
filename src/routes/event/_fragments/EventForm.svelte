@@ -8,7 +8,6 @@
 	const currentTime = dateTimeFormat();
 
 	export let startTime = currentTime;
-	let initialStartTime = startTime;
 	export let endTime = currentTime;
 	export let name = '';
 	export let description = '';
@@ -31,7 +30,7 @@
 {/if}
 {#if $page.form?.supabaseErrorMessage}
 	<div class="errorbois">
-		<h3>Something really isn't woriking...</h3>
+		<h3>Something really isn't working...</h3>
 		<p>
 			{$page.form?.supabaseErrorMessage}
 		</p>

@@ -1,4 +1,4 @@
-export const load = async ({ locals: { getSession, supabase } }) => {
+export const load = async ({ locals: { getSession } }) => {
 	return {
 		session: await getSession()
 	};
