@@ -1,5 +1,6 @@
 import { env } from '$env/dynamic/public';
 import { createSupabaseLoadClient } from '@supabase/auth-helpers-sveltekit';
+import { error } from '@sveltejs/kit';
 
 export const load = async ({ fetch, data, depends }) => {
 	depends('supabase:auth');
