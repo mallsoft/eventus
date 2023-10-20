@@ -20,7 +20,7 @@
 	edit
 />
 
-<form action="/event/{id}/?/eventDelete" method="post">
+<form action="/event-admin/{id}/?/eventDelete" method="post">
 	<input type="text" pattern={name} required placeholder="event name" />
 	<button>Delete ✖</button>
 </form>

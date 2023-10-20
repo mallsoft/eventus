@@ -4,6 +4,10 @@ import { error } from '@sveltejs/kit';
 export const load = async ({ parent, params: { event_id } }) => {
 	const { supabase } = await parent();
 
+	if (/[^0-9]/.test(event_id)) {
+		throw error(404, 'Not Found');
+	}
+
 	let { data: event, error: err } = await supabase
 		.from('events')
 		.select('*, attending:rsvps(*)')
@@ -14,7 +18,6 @@ export const load = async ({ parent, params: { event_id } }) => {
 	}
 
 	if (!event.length) {
-		// no event found..?
 		throw error(404, 'Not Found');
 	}
 

@@ -4,13 +4,13 @@
 
 <h1>All events</h1>
 
-<a class="buttony" href="/event/create">Create new event</a>
+<a class="buttony" href="/event-admin/create">Create new event</a>
 
 {#if data.events}
 	<ol>
 		{#each data.events as { id, name, description }}
 			<li>
-				<a href="/event/{id}">
+				<a href="/event-admin/{id}">
 					<h2>{name}</h2>
 					<p>{description}</p>
 				</a>

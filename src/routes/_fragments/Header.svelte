@@ -9,8 +9,8 @@
 			<a class="buttony" href="/">Index</a>
 		{/if}
 
-		{#if $page.data.event_admin && $page.url.pathname !== '/event'}
-			<a class="buttony" href="/event">Event edit</a>
+		{#if $page.data.event_admin && $page.url.pathname !== '/event-admin'}
+			<a class="buttony" href="/event-admin">Event edit</a>
 		{/if}
 	</nav>
 	<LogInOut />
