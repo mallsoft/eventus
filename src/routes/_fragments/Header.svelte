@@ -1,5 +1,6 @@
 <script>
 	import { page } from '$app/stores';
+	import AvatarAndName from '$lib/AvatarAndName.svelte';
 	import LogInGithub from '$lib/LogInGithub.svelte';
 	import Logout from '$lib/Logout.svelte';
 </script>
@@ -7,36 +8,52 @@
 <header>
 	<nav>
 		{#if $page.data.event_admin}
-			<a class="buttony" href="/">Landing</a>
-			<a class="buttony" href="/event-admin">Event edit</a>
+			{#if $page.url.pathname !== '/event-admin'}
+				<a class="buttony" href="/event-admin">Event admin</a>
+			{/if}
 		{/if}
 
-		<Logout />
-		<LogInGithub />
+		<div>
+			{#if $page.data.session}
+				{#if $page.url.pathname === '/'}
+					<Logout />
+				{/if}
+
+				<a class="buttony" class:current={$page.url.pathname === '/'} href="/"><AvatarAndName /></a>
+			{/if}
+		</div>
 	</nav>
 </header>
 
 <style>
 	header {
-		display: flex;
-		justify-content: space-between;
-
-		flex-wrap: wrap-reverse;
-
-		gap: 0.5rem;
 		width: 100%;
 		padding: 1rem;
+		display: flex;
 	}
 
 	nav {
 		display: flex;
-		flex-wrap: wrap;
+		justify-content: space-between;
+		flex-wrap: wrap-reverse;
+		flex-grow: 1;
+
 		gap: 0.5rem;
 	}
 
 	nav a {
-		display: flex;
-		height: 100%;
+		display: block;
 		align-items: center;
+	}
+
+	div {
+		display: flex;
+		justify-content: space-between;
+		gap: 0.5rem;
+		margin-left: auto;
+	}
+
+	div :global(button) {
+		height: 100%;
 	}
 </style>

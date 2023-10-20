@@ -5,7 +5,7 @@
 	--color-c: #00343e;
 	--color-d: #e9f8f4;
 
-	---colwidth: 800px;
+	---colwidth: 960px;
 	--err-bg: #ffa1a1;
 	--err-text: #2e2e2e;
 }
@@ -32,6 +32,8 @@ body {
 	min-height: 100%;
 
 	scrollbar-gutter: stable;
+
+	font-size: 1.25rem;
 }
 
 ol,

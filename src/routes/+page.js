@@ -7,8 +7,8 @@ export const load = async ({ parent }) => {
 	let { data: events, error: err } = await supabase
 		.from('events')
 		.select('*, attending:rsvps(*)')
-		// .lt('end_time', "now() - interval '1 day'") // end date less than current time
-		.lt('publish_on', 'now()') // end date less than current time
+		.lt('publish_on', 'now()') // publish date less than current time
+		.gt('end_time', 'now()') // end date less than now
 		.order('start_time', { ascending: true });
 
 	if (err) {

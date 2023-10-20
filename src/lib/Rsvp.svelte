@@ -1,6 +1,7 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
+	import LogInGithub from './LogInGithub.svelte';
 	export let event;
 
 	$: isTooLate = new Date().getTime() >= new Date(event.rsvp_before).getTime();
@@ -30,7 +31,8 @@
 		</div>
 	{/if}
 {:else}
-	<a href="/account">You need to log in to register for events</a>
+	<h2>Log in to register</h2>
+	<LogInGithub />
 {/if}
 
 <style>
