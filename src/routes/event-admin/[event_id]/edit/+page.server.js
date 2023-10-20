@@ -1,17 +1,10 @@
 import { tz } from '$lib/time';
 import { validateEvent } from '$lib/server/validate';
-import { error, fail, redirect } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 
-/** @type {import('./$types').Actions} */
+/** @type {import('../$types').Actions} */
 export const actions = {
-	editEvent: async ({ request, locals: { supabase, getSession }, params: { edit_id } }) => {
-		const session = await getSession();
-
-		if (!session) {
-			// the user is not signed in
-			throw error(401, { message: 'Unauthorized' });
-		}
-
+	editEvent: async ({ request, locals: { supabase }, params: { event_id } }) => {
 		const formData = await request.formData();
 
 		let editEvent = {
@@ -41,7 +34,7 @@ export const actions = {
 			end_time: tz(editEvent.end_time, offset)
 		};
 
-		const { error: err } = await supabase.from('events').update([editEvent]).eq('id', edit_id);
+		const { error: err } = await supabase.from('events').update([editEvent]).eq('id', event_id);
 
 		if (err) {
 			console.log('err', err);
@@ -51,18 +44,18 @@ export const actions = {
 			});
 		}
 
-		throw redirect(303, '/');
+		throw redirect(303, '/' + event_id);
 	},
-	eventDelete: async ({ locals: { supabase }, params: { edit_id } }) => {
-		console.log('DELETE EVENT', edit_id);
+	eventDelete: async ({ locals: { supabase }, params: { event_id } }) => {
+		console.log('DELETE EVENT', event_id);
 
-		const { error } = await supabase.from('events').delete().eq('id', edit_id);
+		const { error } = await supabase.from('events').delete().eq('id', event_id);
 
 		if (error) {
 			console.error(error);
 			return fail(500, { message: 'Server error. Try again later.' });
 		}
 
-		throw redirect(303, '/');
+		throw redirect(303, '/event-admin');
 	}
 };

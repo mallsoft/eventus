@@ -3,13 +3,16 @@
 	import { page } from '$app/stores';
 	import { dateTimeFormat } from '$lib/time.js';
 
-	export let edit = false;
+	export let action = '';
 
 	const currentTime = dateTimeFormat();
 
 	export let startTime = currentTime;
 	export let endTime = currentTime;
 	export let name = '';
+
+	const isEdit = name && name.length > 0;
+
 	export let description = '';
 	export let maxPax = '';
 	export let publishTime = currentTime;
@@ -37,7 +40,7 @@
 	</div>
 {/if}
 
-<form action={edit ? '?/editEvent' : '?/createEvent'} method="POST" autocomplete="off" use:enhance>
+<form {action} method="POST" autocomplete="off" use:enhance>
 	<label>
 		<span>Name</span>
 		<input placeholder="Event name" required type="text" name="name" value={name} />
@@ -72,7 +75,7 @@
 			type="datetime-local"
 			name="startTime"
 			bind:value={startTime}
-			min={edit ? null : currentTime}
+			min={isEdit ? null : currentTime}
 		/>
 	</label>
 
@@ -93,7 +96,7 @@
 
 	<input type="hidden" name="tz" value={new Date().getTimezoneOffset()} />
 
-	<button type="submit">{edit ? 'Save' : 'Create event!'}</button>
+	<button type="submit">{isEdit ? 'Save' : 'Create event!'}</button>
 </form>
 
 <style>

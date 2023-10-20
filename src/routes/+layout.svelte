@@ -21,6 +21,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>DNB Invites</title>
+</svelte:head>
+
 <Header />
 
 <main class="container">

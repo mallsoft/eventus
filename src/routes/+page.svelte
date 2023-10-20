@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import { invalidateAll } from '$app/navigation';
+	import LogInGithub from '$lib/LogInGithub.svelte';
 
 	export let data;
 
@@ -17,31 +18,19 @@
 	});
 </script>
 
-<svelte:head>
-	<title>DNB Events</title>
-</svelte:head>
+{#if data.session}
+	{@const name = data.session.user?.user_metadata?.user_name}
+	<h1>Hello {name}!</h1>
 
-<h1>{!data?.events.length ? 'No listed events.' : 'Current events'}</h1>
-<ol>
-	{#each data?.events as { id, name }}
-		<li>
-			<a href="/event/{id}">{name}</a>
-		</li>
-	{/each}
-</ol>
+	{#if data?.events}
+		{@const events = data?.events}
+		{@const count = data?.events.length}
+		<h2>You are registered to {count} event{count > 1 ? 's' : ''}</h2>
 
-<style>
-	ol {
-		display: flex;
-		flex-direction: column;
-		gap: 4rem;
-
-		width: 100%;
-	}
-
-	li {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
-	}
-</style>
+		{#each events as { name, id }}
+			<a href={id}>{name}</a>
+		{/each}
+	{/if}
+{:else}
+	<h1>Welcome to DNB invites</h1>
+{/if}

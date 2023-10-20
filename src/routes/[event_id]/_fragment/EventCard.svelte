@@ -1,5 +1,5 @@
 <script>
-	import Rsvp from '../../../_fragments/Rsvp.svelte';
+	import Rsvp from '../../../lib/Rsvp.svelte';
 
 	export let event;
 	$: ({ name, description, start_time, end_time, max_pax, pax, rsvp_before, attending } = event);

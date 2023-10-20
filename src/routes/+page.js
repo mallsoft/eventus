@@ -15,5 +15,5 @@ export const load = async ({ parent }) => {
 		throw error(500, err);
 	}
 
-	return { events };
+	return { events: events.filter((e) => e.attending.length > 0) };
 };

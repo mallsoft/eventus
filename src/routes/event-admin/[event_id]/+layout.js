@@ -1,13 +1,13 @@
 import { error } from '@sveltejs/kit';
 
 /** @type {import('./$types').PageLoad} */
-export const load = async ({ parent, params: { edit_id } }) => {
+export const load = async ({ parent, params: { event_id } }) => {
 	const { supabase } = await parent();
 
 	let { data: event, error: err } = await supabase
 		.from('events')
 		.select('*, attending:rsvps(*)')
-		.eq('id', edit_id)
+		.eq('id', event_id)
 		.order('start_time', { ascending: false });
 
 	if (err) {

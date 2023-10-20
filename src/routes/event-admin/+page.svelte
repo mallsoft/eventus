@@ -2,15 +2,13 @@
 	export let data;
 </script>
 
-<h1>All events</h1>
-
-<a class="buttony" href="/event-admin/create">Create new event</a>
+<h1>Administration</h1>
 
 {#if data.events}
 	<ol>
 		{#each data.events as { id, name, description }}
 			<li>
-				<a href="/event-admin/{id}">
+				<a href="/event-admin/{id}/edit">
 					<h2>{name}</h2>
 					<p>{description}</p>
 				</a>
@@ -19,9 +17,11 @@
 	</ol>
 {/if}
 
+<a class="buttony" href="/event-admin/create">Create new event +</a>
+
 <style>
-	h1 ~ a {
-		margin-bottom: 3rem;
+	a {
+		margin-top: 3rem;
 	}
 
 	ol {

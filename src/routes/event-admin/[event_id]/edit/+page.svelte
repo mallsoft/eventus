@@ -1,8 +1,9 @@
 <script>
 	import { dateTimeFormat } from '$lib/time';
-	import EventForm from '../_fragments/EventForm.svelte';
+	import EventForm from '../../_fragments/EventForm.svelte';
 
 	export let data;
+
 	$: ({ id, description, end_time, max_pax, name, publish_on, rsvp_before, start_time } =
 		data.event_edit[0]);
 </script>
@@ -10,6 +11,7 @@
 <h1>Edit Event</h1>
 
 <EventForm
+	action="?/editEvent"
 	{name}
 	{description}
 	startTime={dateTimeFormat(start_time)}
@@ -20,7 +22,7 @@
 	edit
 />
 
-<form action="/event-admin/{id}/?/eventDelete" method="post">
+<form action="/event-admin/{id}/edit/?/eventDelete" method="post">
 	<input type="text" pattern={name} required placeholder="event name" />
 	<button>Delete ✖</button>
 </form>

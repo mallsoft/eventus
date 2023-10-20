@@ -4,4 +4,4 @@
 
 <h1>Create new event</h1>
 
-<EventForm />
+<EventForm action="?/createEvent" />

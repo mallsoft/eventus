@@ -1,19 +1,19 @@
 <script>
 	import { page } from '$app/stores';
-	import LogInOut from '../../lib/LogInOut.svelte';
+	import LogInGithub from '$lib/LogInGithub.svelte';
+	import Logout from '$lib/Logout.svelte';
 </script>
 
 <header>
 	<nav>
-		{#if $page.url.pathname !== '/'}
-			<a class="buttony" href="/">Index</a>
-		{/if}
-
-		{#if $page.data.event_admin && $page.url.pathname !== '/event-admin'}
+		{#if $page.data.event_admin}
+			<a class="buttony" href="/">Landing</a>
 			<a class="buttony" href="/event-admin">Event edit</a>
 		{/if}
+
+		<Logout />
+		<LogInGithub />
 	</nav>
-	<LogInOut />
 </header>
 
 <style>
