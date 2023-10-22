@@ -19,7 +19,6 @@
 	maxPax={max_pax}
 	publishTime={dateTimeFormat(publish_on)}
 	rsvpTime={dateTimeFormat(rsvp_before)}
-	edit
 />
 
 <form action="/event-admin/{id}/edit/?/eventDelete" method="post">
