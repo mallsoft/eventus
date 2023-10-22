@@ -39,8 +39,8 @@
 	}
 
 	input[type='text']:invalid ~ button {
-		background-color: var(--err-bg);
-		color: var(--err-text);
+		background-color: var(--color-err-bg);
+		color: var(--color-err-text);
 		opacity: 0.7;
 		pointer-events: none;
 	}

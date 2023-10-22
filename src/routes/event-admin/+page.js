@@ -7,7 +7,7 @@ export const load = async ({ parent }) => {
 	let { data: events, error: err } = await supabase
 		.from('events')
 		.select('*')
-		.order('start_time', { ascending: true });
+		.order('start_time', { ascending: false });
 
 	if (err) {
 		throw error(500, err);

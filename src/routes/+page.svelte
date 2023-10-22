@@ -1,4 +1,6 @@
 <script>
+	import Ticket from './_fragments/Ticket.svelte';
+
 	export let data;
 </script>
 
@@ -9,14 +11,16 @@
 		{@const events = data?.events}
 		{@const count = data?.events.length}
 		<!--  -->
-		<h2>You are registered to {count} event{count !== 1 ? 's' : ''}</h2>
+		<h2>Attending {count} event{count !== 1 ? 's' : ''}</h2>
 		{#if count === 0}
 			<p>To register for an event you will have recieved an event link trough email or qr-code</p>
 		{/if}
 
 		<ul>
-			{#each events as { name, id }}
-				<li><a href={id}>{name}</a></li>
+			{#each events as event}
+				<li>
+					<Ticket {event} />
+				</li>
 			{/each}
 		</ul>
 	{/if}

@@ -5,9 +5,13 @@
 	--color-c: #00343e;
 	--color-d: #e9f8f4;
 
-	---colwidth: 960px;
-	--err-bg: #ffa1a1;
-	--err-text: #2e2e2e;
+	---colwidth: 800px;
+
+	--color-err-bg: #ffa1a1;
+	--color-err-text: #2e2e2e;
+
+	--color-ok-bg: #45ff73;
+	--color-ok-text: #006868;
 }
 
 html {

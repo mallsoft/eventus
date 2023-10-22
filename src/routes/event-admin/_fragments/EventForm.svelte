@@ -111,8 +111,8 @@
 	}
 
 	input:invalid:not(:placeholder-shown) {
-		background-color: var(--err-bg);
-		color: var(--err-text);
+		background-color: var(--color-err-bg);
+		color: var(--color-err-text);
 	}
 
 	button {
@@ -140,7 +140,7 @@
 	.errorbois {
 		padding: 1rem;
 		margin: 1rem 0;
-		background-color: var(--err-bg);
-		color: var(--err-text);
+		background-color: var(--color-err-bg);
+		color: var(--color-err-text);
 	}
 </style>

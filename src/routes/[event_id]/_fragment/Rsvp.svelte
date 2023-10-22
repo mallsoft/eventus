@@ -1,7 +1,7 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
-	import LogInGithub from './LogInGithub.svelte';
+	import LogInGithub from '../../../lib/LogInGithub.svelte';
 	export let event;
 
 	$: isTooLate = new Date().getTime() >= new Date(event.rsvp_before).getTime();
@@ -22,7 +22,7 @@
 				<input type="hidden" value={event.id} name="eventId" />
 				<button disabled={!canRsvp && !isRegistered} type="submit">
 					{#if canRsvp || isRegistered}
-						{isRegistered ? 'Unregister' : 'Register'}
+						{isRegistered ? 'Unregister' : 'Click to register🎉'}
 					{:else}
 						Registering closed
 					{/if}
