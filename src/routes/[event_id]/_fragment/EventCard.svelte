@@ -37,6 +37,7 @@
 				<span>{rsvp}</span>
 			</li>
 		{/if}
+		<!--  -->
 		{#if isRegistered}
 			<li><b>You are registered!</b></li>
 		{/if}
@@ -81,32 +82,8 @@
 		}
 	}
 
-	article::before,
-	article::after {
-		position: absolute;
-		content: '';
-		width: 1rem;
-		height: 1rem;
-		border: 0.125rem solid var(--color-c);
-		transition: all 0.2s;
-	}
-
-	article::before {
-		bottom: 0;
-		right: 0;
-		border-top: 0;
-		border-left: 0;
-	}
-	article::after {
-		top: 0;
-		left: 0;
-		border-bottom: 0;
-		border-right: 0;
-	}
-
 	article > p {
 		font-size: 1.4rem;
-
 		color: var(--color-d);
 	}
 

@@ -62,7 +62,6 @@ a {
 }
 
 .buttony {
-	display: block;
 	max-width: max-content;
 }
 a:not(:focus, :hover),
@@ -79,6 +78,9 @@ button,
 
 	padding: 1rem;
 	font-size: 1.5rem;
+
+	display: flex;
+	align-items: center;
 }
 
 @media (width < 610px) {
