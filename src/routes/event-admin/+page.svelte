@@ -6,9 +6,9 @@
 
 {#if data.events}
 	<ol>
-		{#each data.events as { id, name, description }}
+		{#each data.events as { id, name }}
 			<li>
-				<h2>{name}</h2>
+				<h2><a href="/{id}">{name}</a></h2>
 				<div>
 					<a class="buttony" href="/event-admin/{id}/edit">Edit</a>
 				</div>
