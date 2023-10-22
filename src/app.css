@@ -81,6 +81,7 @@ button,
 
 	display: flex;
 	align-items: center;
+	justify-content: center;
 }
 
 @media (width < 610px) {
