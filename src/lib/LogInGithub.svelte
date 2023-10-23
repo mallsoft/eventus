@@ -13,7 +13,7 @@
 					clip-rule="evenodd"
 				/>
 			</svg>
-			<span>Github</span>
+			<span>Github Login</span>
 		</button>
 	</form>
 {/if}

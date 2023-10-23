@@ -11,25 +11,23 @@
 </script>
 
 {#if $page.data?.session}
-	{#if canRsvp}
-		<div>
-			<form
-				action="?/{event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
-				method="post"
-				use:enhance
-				class:isRegistered
-			>
-				<input type="hidden" value={event.id} name="eventId" />
-				<button disabled={!canRsvp && !isRegistered} type="submit">
-					{#if canRsvp || isRegistered}
-						{isRegistered ? 'Unregister' : 'Click to register🎉'}
-					{:else}
-						Registering closed
-					{/if}
-				</button>
-			</form>
-		</div>
-	{/if}
+	<div>
+		<form
+			action="?/{event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
+			method="post"
+			use:enhance
+			class:isRegistered
+		>
+			<input type="hidden" value={event.id} name="eventId" />
+			<button disabled={!canRsvp && !isRegistered} type="submit">
+				{#if canRsvp || isRegistered}
+					{isRegistered ? 'Unregister' : 'Click to register🎉'}
+				{:else}
+					Registering closed
+				{/if}
+			</button>
+		</form>
+	</div>
 {:else}
 	<h2>Log in to register</h2>
 	<LogInGithub />
@@ -41,14 +39,12 @@
 		flex-wrap: wrap;
 		gap: 1rem;
 	}
-	.isRegistered {
-		margin-left: auto;
-	}
+
 	.isRegistered button {
-		opacity: 0.75;
-		transition: opacity 0.1s;
+		background-color: var(--color-err-bg);
+		color: var(--color-err-text);
 	}
 	.isRegistered button:is(:hover, :active, :focus) {
-		opacity: 1;
+		opacity: 0.85;
 	}
 </style>

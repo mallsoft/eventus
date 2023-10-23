@@ -16,10 +16,16 @@
 	</p>
 
 	<Chips {event} />
-	<Rsvp {event} />
+	<div>
+		<Rsvp {event} />
+	</div>
 </article>
 
 <style>
+	div {
+		display: flex;
+		justify-content: flex-end;
+	}
 	h2 {
 		font-size: 2.5rem;
 		color: var(--color-b);
