@@ -1,6 +1,7 @@
 <script>
 	import { dateTimeFormat } from '$lib/time';
 	import EventForm from '../../_fragments/EventForm.svelte';
+	// import EventImage from '../../_fragments/EventImage.svelte';
 
 	export let data;
 
@@ -9,6 +10,8 @@
 </script>
 
 <h1>Edit Event</h1>
+
+<!-- <EventImage /> -->
 
 <EventForm
 	action="?/editEvent"

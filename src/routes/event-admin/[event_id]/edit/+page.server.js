@@ -57,5 +57,32 @@ export const actions = {
 		}
 
 		throw redirect(303, '/event-admin');
+	},
+	imageUpload: async ({ request, locals: { supabase }, params: { event_id } }) => {
+		const form = await request.formData();
+		const image = form.get('image');
+
+		if (!image || image.length === 0) {
+			return fail(400, { imageError: 'No image in request.' });
+		}
+
+		const type = image.type.split('/')[1] ? `.${image.type.split('/')[1]}` : '';
+		const pathName = `ev${event_id}${type}`;
+
+		console.log('UPLOADING IMAGE', pathName, event_id, image.type);
+
+		const { data, error } = await supabase.storage.from('event').upload(pathName, image, {
+			upsert: true
+		});
+
+		if (error) {
+			console.error(error);
+			return fail(500, { imageError: error.message });
+		}
+
+		const { path } = data;
+		const eventImage = await supabase.storage.from('event').getPublicUrl(path);
+		console.log(eventImage);
+		return { eventImage };
 	}
 };
