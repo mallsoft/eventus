@@ -1,3 +1,4 @@
+import { validatePersonalDeets } from '$lib/server/validate';
 import { fail, redirect } from '@sveltejs/kit';
 
 /** @type {import('./$types').Actions} */
@@ -6,8 +7,22 @@ export const actions = {
 		const formData = await request.formData();
 		const event_id = formData.get('eventId');
 
-		const { error } = await supabase.rpc('register_to_event', {
-			event_id
+		// scope creep
+		const name = formData.get('name');
+		const phone = formData.get('phone');
+		const org = formData.get('org');
+
+		// scope creep
+		const meta = { name, phone, org };
+		const fails = validatePersonalDeets(meta);
+		if (fails.length) {
+			return fail(400, { validationErrors: fails });
+		}
+		// ---
+
+		const { error } = await supabase.rpc('register_to_event_meta', {
+			event_id,
+			meta
 		});
 
 		if (error) {
