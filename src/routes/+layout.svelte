@@ -21,6 +21,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>DNB Invites{data.event_admin ? ' (admin)' : ''}</title>
+</svelte:head>
+
 <Header />
 
 <main class="container">
@@ -44,7 +48,7 @@
 	main > :global(h1) {
 		background-color: var(--color-b);
 		color: var(--color-a);
-		font-size: 5rem;
+		font-size: 4.5rem;
 		padding: 1rem 2rem;
 		margin-bottom: 4rem;
 	}

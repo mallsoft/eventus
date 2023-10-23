@@ -1,42 +1,53 @@
 <script>
 	import { page } from '$app/stores';
-	import LogInOut from '../../lib/LogInOut.svelte';
+	import AvatarAndName from '$lib/AvatarAndName.svelte';
+	import Logout from '$lib/Logout.svelte';
 </script>
 
 <header>
 	<nav>
-		{#if $page.url.pathname !== '/'}
-			<a class="buttony" href="/">Index</a>
+		{#if $page.data.event_admin}
+			{#if $page.url.pathname !== '/event-admin'}
+				<a class="buttony" href="/event-admin">Event admin</a>
+			{/if}
 		{/if}
 
-		{#if $page.data.event_admin && $page.url.pathname !== '/event-admin'}
-			<a class="buttony" href="/event-admin">Event edit</a>
-		{/if}
+		<div>
+			{#if $page.data.session}
+				{#if $page.url.pathname === '/'}
+					<Logout />
+				{/if}
+
+				<a class="buttony" class:current={$page.url.pathname === '/'} href="/"><AvatarAndName /></a>
+			{/if}
+		</div>
 	</nav>
-	<LogInOut />
 </header>
 
 <style>
 	header {
-		display: flex;
-		justify-content: space-between;
-
-		flex-wrap: wrap-reverse;
-
-		gap: 0.5rem;
 		width: 100%;
 		padding: 1rem;
+		display: flex;
 	}
 
 	nav {
 		display: flex;
-		flex-wrap: wrap;
+		justify-content: space-between;
+		flex-wrap: wrap-reverse;
+		flex-grow: 1;
+
 		gap: 0.5rem;
 	}
 
-	nav a {
+	div {
 		display: flex;
+		justify-content: space-between;
+		gap: 0.5rem;
+		margin-left: auto;
+	}
+
+	div :global(button) {
 		height: 100%;
-		align-items: center;
 	}
 </style>

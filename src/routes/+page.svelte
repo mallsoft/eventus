@@ -1,47 +1,45 @@
 <script>
-	import { onMount } from 'svelte';
-	import { invalidateAll } from '$app/navigation';
+	import LogInGithub from '$lib/LogInGithub.svelte';
+	import Ticket from './_fragments/Ticket.svelte';
 
 	export let data;
-
-	$: ({ supabase } = data);
-	onMount(() => {
-		const events = supabase
-			.channel('event-channel')
-			.on('postgres_changes', { event: '*', schema: 'public', table: 'events' }, () => {
-				invalidateAll();
-			})
-			.subscribe();
-
-		return () => events.unsubscribe();
-	});
 </script>
 
-<svelte:head>
-	<title>DNB Events</title>
-</svelte:head>
+<h1>DNB invites</h1>
+{#if data.session}
+	<!-- events -->
+	{#if data?.events}
+		{@const events = data?.events}
+		{@const count = data?.events.length}
+		<!--  -->
+		<h2>Attending {count} event{count !== 1 ? 's' : ''}</h2>
+		{#if count === 0}
+			<p>To register for an event you will have recieved an event link trough email</p>
+		{/if}
 
-<h1>{!data?.events.length ? 'No listed events.' : 'Current events'}</h1>
-<ol>
-	{#each data?.events as { id, name }}
-		<li>
-			<a href="/event/{id}">{name}</a>
-		</li>
-	{/each}
-</ol>
+		<ul>
+			{#each events as event}
+				<li>
+					<Ticket {event} />
+				</li>
+			{/each}
+		</ul>
+	{/if}
+	<!-- -->
+{:else}
+	<h2>To see events you are attending please log in</h2>
+	<br />
+	<LogInGithub />
+{/if}
 
 <style>
-	ol {
+	ul {
+		padding: 2rem 0;
 		display: flex;
 		flex-direction: column;
-		gap: 4rem;
-
-		width: 100%;
+		gap: 1rem;
 	}
-
-	li {
-		display: flex;
-		flex-direction: column;
-		gap: 0.75rem;
+	p {
+		padding: 3rem 0;
 	}
 </style>

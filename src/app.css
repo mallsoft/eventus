@@ -6,8 +6,12 @@
 	--color-d: #e9f8f4;
 
 	---colwidth: 800px;
-	--err-bg: #ffa1a1;
-	--err-text: #2e2e2e;
+
+	--color-err-bg: #ffa1a1;
+	--color-err-text: #2e2e2e;
+
+	--color-ok-bg: #45ff73;
+	--color-ok-text: #006868;
 }
 
 html {
@@ -32,6 +36,8 @@ body {
 	min-height: 100%;
 
 	scrollbar-gutter: stable;
+
+	font-size: 1.25rem;
 }
 
 ol,
@@ -60,7 +66,6 @@ a {
 }
 
 .buttony {
-	display: block;
 	max-width: max-content;
 }
 a:not(:focus, :hover),
@@ -77,6 +82,10 @@ button,
 
 	padding: 1rem;
 	font-size: 1.5rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 @media (width < 610px) {
