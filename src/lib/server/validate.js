@@ -1,3 +1,5 @@
+import { validOrgs } from '$lib/validOrgs';
+
 export function validateEvent({
 	name,
 	description,
@@ -52,6 +54,30 @@ export function validateEvent({
 		//
 	} catch {
 		fails.push('Error validating event');
+	}
+
+	return fails;
+}
+export function validatePersonalDeets(deets) {
+	let fails = [];
+
+	const { name, phone, org } = deets;
+
+	if (!name || !phone || !org) {
+		fails.push('Missing fields!');
+		return fails;
+	}
+
+	if (name.length < 1) {
+		fails.push('Name too short');
+	}
+
+	if (phone.length < 8 || phone.length > 12) {
+		fails.push('Phonenumber invalid length');
+	}
+
+	if (!validOrgs.includes(org)) {
+		fails.push('Organization is invalid');
 	}
 
 	return fails;
