@@ -21,7 +21,7 @@ export function validateEvent({
 			fails.push('Not valid name');
 		}
 
-		if (description && description.length >= 1000) {
+		if (description && description.length >= 2000) {
 			fails.push('Description too long');
 		}
 
