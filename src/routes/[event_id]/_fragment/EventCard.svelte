@@ -1,5 +1,5 @@
 <script>
-	import Rsvp from '$lib/Rsvp.svelte';
+	import Rsvp from './Rsvp.svelte';
 	import Chips from './Chips.svelte';
 
 	export let event;
@@ -25,6 +25,8 @@
 	div {
 		display: flex;
 		justify-content: flex-end;
+		align-items: center;
+		gap: 2rem;
 	}
 	h2 {
 		font-size: 2.5rem;

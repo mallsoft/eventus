@@ -1,11 +1,12 @@
 <script>
+	import LogInGithub from '$lib/LogInGithub.svelte';
 	import Ticket from './_fragments/Ticket.svelte';
 
 	export let data;
 </script>
 
+<h1>DNB invites</h1>
 {#if data.session}
-	<h1>DNB invites</h1>
 	<!-- events -->
 	{#if data?.events}
 		{@const events = data?.events}
@@ -13,7 +14,7 @@
 		<!--  -->
 		<h2>Attending {count} event{count !== 1 ? 's' : ''}</h2>
 		{#if count === 0}
-			<p>To register for an event you will have recieved an event link trough email or qr-code</p>
+			<p>To register for an event you will have recieved an event link trough email</p>
 		{/if}
 
 		<ul>
@@ -26,8 +27,9 @@
 	{/if}
 	<!-- -->
 {:else}
-	<h1>No session</h1>
-	<h2>Please log in to see your events</h2>
+	<h2>To see events you are attending please log in</h2>
+	<br />
+	<LogInGithub />
 {/if}
 
 <style>
