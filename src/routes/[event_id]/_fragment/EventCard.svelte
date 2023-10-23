@@ -1,5 +1,5 @@
 <script>
-	import Rsvp from './Rsvp.svelte';
+	import Rsvp from '$lib/Rsvp.svelte';
 	import Chips from './Chips.svelte';
 
 	export let event;

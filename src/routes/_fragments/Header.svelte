@@ -1,8 +1,8 @@
 <script>
 	import { page } from '$app/stores';
 	import AvatarAndName from '$lib/AvatarAndName.svelte';
-	import LogInGithub from '$lib/LogInGithub.svelte';
 	import Logout from '$lib/Logout.svelte';
+	import Rsvp from '$lib/Rsvp.svelte';
 </script>
 
 <header>
@@ -11,6 +11,10 @@
 			{#if $page.url.pathname !== '/event-admin'}
 				<a class="buttony" href="/event-admin">Event admin</a>
 			{/if}
+		{/if}
+
+		{#if $page.route.id === '/[event_id]'}
+			<Rsvp />
 		{/if}
 
 		<div>

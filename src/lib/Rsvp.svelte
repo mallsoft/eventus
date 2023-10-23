@@ -1,24 +1,23 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
-	import LogInGithub from '../../../lib/LogInGithub.svelte';
-	export let event;
+	import LogInGithub from '$lib/LogInGithub.svelte';
 
-	$: isTooLate = new Date().getTime() >= new Date(event.rsvp_before).getTime();
-	$: eventIsFull = event.pax >= event.max_pax;
+	$: isTooLate = new Date().getTime() >= new Date($page.data.event.rsvp_before).getTime();
+	$: eventIsFull = $page.data.event.pax >= $page.data.event.max_pax;
 	$: canRsvp = !isTooLate && !eventIsFull;
-	$: isRegistered = event.attending?.length > 0;
+	$: isRegistered = $page.data.event.attending?.length > 0;
 </script>
 
 {#if $page.data?.session}
 	<div>
 		<form
-			action="?/{event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
+			action="?/{$page.data.event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
 			method="post"
 			use:enhance
 			class:isRegistered
 		>
-			<input type="hidden" value={event.id} name="eventId" />
+			<input type="hidden" value={$page.data.event.id} name="eventId" />
 			<button disabled={!canRsvp && !isRegistered} type="submit">
 				{#if canRsvp || isRegistered}
 					{isRegistered ? 'Unregister' : 'Click to register🎉'}
@@ -38,6 +37,10 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 1rem;
+	}
+
+	button {
+		height: 100%;
 	}
 
 	.isRegistered button {
