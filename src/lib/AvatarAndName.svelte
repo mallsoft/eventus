@@ -7,10 +7,10 @@
 	{@const avatar = $page.data.session?.user?.user_metadata?.avatar_url}
 
 	<div>
-		<img src={avatar} alt="avatar" />
 		<p>
 			{username}
 		</p>
+		<img src={avatar} alt="avatar" />
 	</div>
 {/if}
 

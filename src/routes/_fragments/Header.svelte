@@ -8,16 +8,13 @@
 	<nav>
 		{#if $page.data.event_admin}
 			{#if $page.url.pathname !== '/event-admin'}
-				<a class="buttony" href="/event-admin">Event admin</a>
+				<a class="buttony" href="/event-admin">⚙️</a>
 			{/if}
 		{/if}
 
 		<div>
 			{#if $page.data.session}
-				{#if $page.url.pathname === '/'}
-					<Logout />
-				{/if}
-
+				<Logout />
 				<a class="buttony" class:current={$page.url.pathname === '/'} href="/"><AvatarAndName /></a>
 			{/if}
 		</div>
@@ -49,5 +46,8 @@
 
 	div :global(button) {
 		height: 100%;
+	}
+	[href='/'] {
+		background-color: transparent;
 	}
 </style>
