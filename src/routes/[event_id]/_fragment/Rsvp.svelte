@@ -14,56 +14,55 @@
 </script>
 
 {#if $page.data?.session}
-	<div>
-		<form
-			action="?/{$page.data.event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
-			method="post"
-			use:enhance
-			class:isRegistered
-			autocomplete="off"
-		>
-			{#if canRsvp && !isRegistered}
-				<fieldset required>
-					<legend>Org.</legend>
-					{#each validOrgs as orgname}
-						<label>
-							<span>{orgname}</span>
-							<input type="radio" name="org" value={orgname} />
-						</label>
-					{/each}
-				</fieldset>
-				<input type="text" name="name" required placeholder="full name" minlength="1" />
-				<input
-					type="tel"
-					name="phone"
-					required
-					minlength="8"
-					maxlength="12"
-					placeholder="phone number"
-				/>
+	<form
+		action="?/{$page.data.event.attending?.length > 0 ? 'eventUnregister' : 'eventRegister'}"
+		method="post"
+		use:enhance
+		class:isRegistered
+		autocomplete="off"
+	>
+		<h3>Register to event</h3>
+
+		{#if canRsvp && !isRegistered}
+			<fieldset required>
+				<legend>Org.</legend>
+				{#each validOrgs as orgname}
+					<label>
+						<span>{orgname}</span>
+						<input type="radio" name="org" value={orgname} />
+					</label>
+				{/each}
+			</fieldset>
+			<input type="text" name="name" required placeholder="Full name" minlength="1" />
+			<input
+				type="tel"
+				name="phone"
+				required
+				minlength="8"
+				maxlength="12"
+				placeholder="Phone number"
+			/>
+		{/if}
+		<input type="hidden" value={$page.data.event.id} name="eventId" />
+		<button disabled={!canRsvp && !isRegistered} type="submit">
+			{#if canRsvp || isRegistered}
+				{isRegistered ? unregisterText : registerText}
+			{:else}
+				Registering closed
 			{/if}
-			<input type="hidden" value={$page.data.event.id} name="eventId" />
-			<button disabled={!canRsvp && !isRegistered} type="submit">
-				{#if canRsvp || isRegistered}
-					{isRegistered ? unregisterText : registerText}
-				{:else}
-					Registering closed
-				{/if}
-			</button>
-		</form>
-	</div>
+		</button>
+	</form>
 {:else}
 	<LogInGithub />
 {/if}
 
 <style>
-	div {
-		margin-left: auto;
-	}
 	form {
 		gap: 1rem;
 		display: flex;
 		flex-direction: column;
+		margin-left: auto;
+		margin-top: 1rem;
 	}
 
 	button {
