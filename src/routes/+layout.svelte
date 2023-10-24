@@ -22,7 +22,7 @@
 </script>
 
 <svelte:head>
-	<title>DNB Invites{data.event_admin ? ' (admin)' : ''}</title>
+	<title>DNB Event{data.event_admin ? ' (admin)' : ''}</title>
 </svelte:head>
 
 <Header />

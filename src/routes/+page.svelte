@@ -5,7 +5,7 @@
 	export let data;
 </script>
 
-<h1>DNB invites</h1>
+<h1>DNB Event</h1>
 {#if data.session}
 	<!-- events -->
 	{#if data?.events}
