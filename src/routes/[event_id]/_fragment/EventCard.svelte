@@ -35,6 +35,8 @@
 		padding: 1.5rem;
 
 		position: relative;
+
+		word-wrap: break-word;
 	}
 
 	@media (width < 710px) {

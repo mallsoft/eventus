@@ -18,17 +18,16 @@
 	div {
 		display: flex;
 		align-items: center;
-		font-size: 1.25rem;
-		gap: 0.5rem;
+		font-size: 1em;
+		gap: 0.5em;
 
 		max-width: fit-content;
-
 		position: relative;
 	}
 
 	img {
-		height: 2rem;
-		width: 2rem;
+		height: 1.5em;
+		width: 1.5em;
 		border-radius: 100%;
 	}
 </style>

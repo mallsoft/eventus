@@ -6,16 +6,14 @@
 
 <header>
 	<nav>
-		{#if $page.data.event_admin}
-			{#if $page.url.pathname !== '/event-admin'}
-				<a class="buttony" href="/event-admin">⚙️</a>
-			{/if}
+		{#if $page.data.event_admin && $page.url.pathname !== '/event-admin'}
+			<a href="/event-admin">λ</a>
 		{/if}
 
 		<div>
 			{#if $page.data.session}
+				<a class:current={$page.url.pathname === '/'} href="/"><AvatarAndName /></a>
 				<Logout />
-				<a class="buttony" class:current={$page.url.pathname === '/'} href="/"><AvatarAndName /></a>
 			{/if}
 		</div>
 	</nav>
@@ -31,6 +29,7 @@
 	nav {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		flex-wrap: wrap-reverse;
 		flex-grow: 1;
 
@@ -40,14 +39,24 @@
 	div {
 		display: flex;
 		justify-content: space-between;
-		gap: 0.5rem;
+		gap: 2rem;
 		margin-left: auto;
 	}
 
-	div :global(button) {
-		height: 100%;
+	nav :global(button),
+	nav :global(a) {
+		padding: 0;
+		font-size: 2rem;
+		font-weight: inherit;
 	}
-	[href='/'] {
+	nav :global(button) {
+		height: 100%;
 		background-color: transparent;
+	}
+
+	nav :global(button:hover) {
+		height: 100%;
+		background-color: transparent;
+		color: var(--color-d);
 	}
 </style>

@@ -2,7 +2,7 @@
 	export let data;
 </script>
 
-<h1>Event Administration</h1>
+<h1>Administration</h1>
 
 {#if data.events}
 	<ol>

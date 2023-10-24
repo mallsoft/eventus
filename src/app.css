@@ -3,7 +3,7 @@
 	--color-a: #007272;
 
 	--color-c: #00343e;
-	--color-d: #e9f8f4;
+	--color-d: #cffff2;
 
 	---colwidth: 800px;
 
@@ -98,12 +98,6 @@ button,
 	button,
 	.buttony {
 		padding: 0.75rem;
-		font-size: 1.25rem;
-	}
-}
-@media (width < 410px) {
-	button,
-	.buttony {
 		font-size: 1rem;
 	}
 }
