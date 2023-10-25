@@ -31,6 +31,10 @@
 	<slot />
 </main>
 
+<footer>
+	<a href="/info">Privacy</a>
+</footer>
+
 <style>
 	main {
 		box-sizing: border-box;
@@ -57,5 +61,19 @@
 		main > :global(h1) {
 			font-size: 2rem;
 		}
+	}
+
+	footer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		padding: 1rem 2rem;
+		margin-top: auto;
+	}
+
+	footer a {
+		color: var(--color-d);
+		margin-left: auto;
 	}
 </style>
