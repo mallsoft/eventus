@@ -70,18 +70,18 @@
 				const center = frame[1][1]; // center icon
 				if (center === frame[1][0] && center === frame[1][2]) {
 					// horisontal win
-					coin += 350; // todo, complexify
+					coin += 250; // todo, complexify
 					locked.forEach((_, i) => (locked[i] = false)); //.....................sssss
 					return (winningIcon = center);
 				}
 				if (center === frame[0][0] && center === frame[2][2]) {
 					// diagonal top left -> bottom
-					coin += 350;
+					coin += 250;
 					return (winningIcon = center);
 				}
 				if (center === frame[0][2] && center === frame[2][0]) {
 					// diagonal top right -> bottom
-					coin += 350;
+					coin += 250;
 					return (winningIcon = center);
 				}
 			}
@@ -103,6 +103,7 @@
 		<!-- "view" -->
 
 		{#each wheels as _, i}
+			<!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
 			<li
 				bind:this={wheels[i]}
 				class:locked={locked[i]}
@@ -141,9 +142,9 @@
 		display: flex;
 		flex-flow: column;
 		align-items: center;
-		max-width: fit-content;
-
-		margin: 0 20px;
+		justify-content: center;
+		width: fit-content;
+		max-width: 100%;
 
 		--a: #000000;
 		--b: #001457;
@@ -153,11 +154,15 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		width: 60%;
+		gap: 1rem;
+		margin-top: 1rem;
 	}
+
 	.machine div > p {
 		color: var(--color-d);
-		font-size: 2em;
+		font-size: 3em;
+		min-width: 4ch;
+		text-align: right;
 	}
 
 	button,
@@ -170,8 +175,7 @@
 		color: var(--color-d);
 		text-shadow: 2px 2px 2px var(--bg1);
 
-		margin: 30px;
-		font-size: 25px;
+		font-size: 1rem;
 		width: 3.5em;
 		aspect-ratio: 1;
 
@@ -220,8 +224,9 @@
 		height: 350px;
 
 		border-radius: 50px;
-		box-shadow: 10px 15px 30px -10px rgba(0, 0, 0, 0.404), 20px 20px 56px -12px rgba(0, 0, 0, 0.444);
 		gap: calc(var(--segment-width) * 0.15);
+		box-shadow: 10px 15px 30px -10px rgba(0, 0, 0, 0.404), 20px 20px 56px -12px rgba(0, 0, 0, 0.444),
+			10px 15px 30px -5px rgba(255, 255, 255, 0.404) inset;
 	}
 	li,
 	li div {
@@ -315,5 +320,11 @@
 	}
 	li.locked div {
 		border-color: whitesmoke;
+	}
+
+	@media (width < 610px) {
+		ul {
+			transform: scale(0.6);
+		}
 	}
 </style>
