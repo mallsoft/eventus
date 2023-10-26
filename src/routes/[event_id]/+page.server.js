@@ -1,5 +1,55 @@
 import { validatePersonalDeets } from '$lib/server/validate';
-import { fail, redirect } from '@sveltejs/kit';
+import { fail, redirect, error } from '@sveltejs/kit';
+import QRCode from 'qrcode';
+
+/** @type {import('./$types').PageLoad} */
+export const load = async ({ locals: { supabase }, params: { event_id }, url }) => {
+	if (/[^0-9]/.test(event_id)) {
+		throw error(404, 'Not Found');
+	}
+
+	let { data: event, error: err } = await supabase
+		.from('events')
+		.select('*, attending:rsvps(*)')
+		.eq('id', event_id)
+		.order('start_time', { ascending: false });
+	if (err) {
+		throw error(500, err);
+	}
+
+	if (!event.length) {
+		throw error(404, 'Not Found');
+	}
+
+	const attending = event[0].attending?.length > 0;
+	let ticket; // if user has one that is...
+
+	if (attending) {
+		console.log('such attending!');
+		// person is registered ... so make a ticket...
+
+		// url is ...ticket uid + some stuf.. (users can see their own row in the rsvp thing)
+		const res = await supabase.from('rsvps').select('reference').eq('event_id', event_id);
+		if (!res.error) {
+			const reference = res?.data[0]?.reference;
+			if (reference) {
+				// use ref to create checkpath
+				const path = `${url.origin}/event-admin/${event_id}/${reference}`;
+				const qr = await new Promise((resolve, reject) => {
+					QRCode.toString(path, { type: 'svg' }, (err, result) => {
+						err ? reject(err) : resolve(result);
+					});
+				});
+
+				// console.log('TICKET:', path);
+				// ticket🤠
+				ticket = { qr, path };
+			}
+		}
+	}
+
+	return { event: event[0], ticket };
+};
 
 /** @type {import('./$types').Actions} */
 export const actions = {

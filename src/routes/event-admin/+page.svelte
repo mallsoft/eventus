@@ -6,9 +6,14 @@
 
 {#if data.events}
 	<ol>
-		{#each data.events as { id, name }}
+		{#each data.events as { id, name, max_pax, pax }}
 			<li>
-				<h2><a href="/{id}">{name}</a></h2>
+				<h2>
+					<a href="/{id}">{name}</a>
+				</h2>
+				<p>
+					Registered ({pax}/{max_pax})
+				</p>
 				<div>
 					<a class="buttony" href="/event-admin/{id}/edit">Edit</a>
 				</div>
@@ -20,6 +25,10 @@
 <a class="buttony" href="/event-admin/create">Create new event +</a>
 
 <style>
+	h2 {
+		font-size: 1.5rem;
+	}
+
 	ol {
 		margin-bottom: 3rem;
 	}
