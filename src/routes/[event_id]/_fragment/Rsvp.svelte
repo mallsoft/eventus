@@ -86,7 +86,5 @@
 	.errorbois {
 		width: fit-content;
 		margin-left: auto;
-		background-color: var(--color-err-bg);
-		color: var(--color-err-text);
 	}
 </style>

@@ -65,6 +65,12 @@ a {
 	color: inherit;
 }
 
+.errorbois {
+	padding: 1rem;
+	background-color: var(--color-err-bg);
+	color: var(--color-err-text);
+}
+
 .buttony {
 	width: max-content;
 }

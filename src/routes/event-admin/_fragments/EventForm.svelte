@@ -138,9 +138,6 @@
 	}
 
 	.errorbois {
-		padding: 1rem;
 		margin: 1rem 0;
-		background-color: var(--color-err-bg);
-		color: var(--color-err-text);
 	}
 </style>
