@@ -26,8 +26,9 @@
 	}
 
 	img {
-		height: 1.5em;
-		width: 1.5em;
+		height: 1.25em;
+		width: 1.25em;
 		border-radius: 100%;
+		border: 2px solid currentColor;
 	}
 </style>
