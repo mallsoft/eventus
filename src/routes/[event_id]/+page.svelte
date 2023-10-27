@@ -13,7 +13,7 @@
 	<Chips event={data.event} />
 	<div>
 		{#if data.event.attending.length > 0}
-			<a class="buttony" href="{$page.params.event_id}/ticket">Ticket</a>
+			<a class="buttony" href="{$page.params.event_id}/ticket">Show Ticket</a>
 		{/if}
 
 		<Rsvp {form} />

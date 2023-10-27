@@ -5,7 +5,6 @@ import QRCode from 'qrcode';
 export const load = async ({ locals: { supabase }, params: { event_id }, url }) => {
 	let ticket; // if user has one that is...
 
-	console.log('Get ticket ref!');
 	// url is ...ticket uid + some stuf.. (users can see their own row in the rsvp thing)
 	const res = await supabase.from('rsvps').select('reference, meta').eq('event_id', event_id);
 	if (!res.error) {

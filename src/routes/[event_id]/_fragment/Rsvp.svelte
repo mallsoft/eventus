@@ -23,9 +23,9 @@
 		class:isRegistered
 		autocomplete="off"
 	>
-		<h3>Register to event</h3>
-
 		{#if canRsvp && !isRegistered}
+			<h3>Register to event</h3>
+
 			<fieldset required>
 				<legend>Org.</legend>
 				{#each validOrgs as orgname}
