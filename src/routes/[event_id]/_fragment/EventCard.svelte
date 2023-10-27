@@ -1,9 +1,6 @@
 <script>
-	import Rsvp from './Rsvp.svelte';
-	import Chips from './Chips.svelte';
-
-	export let event;
-	$: ({ name, description } = event);
+	export let name;
+	export let description;
 </script>
 
 <article>
@@ -15,8 +12,7 @@
 		{description}
 	</p>
 
-	<Chips {event} />
-	<Rsvp />
+	<slot />
 </article>
 
 <style>

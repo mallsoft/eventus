@@ -4,6 +4,8 @@
 	import LogInGithub from '$lib/LogInGithub.svelte';
 	import { validOrgs } from '$lib/validOrgs';
 
+	export let form;
+
 	export let unregisterText = 'Unregister';
 	export let registerText = 'Click to register🎉';
 
@@ -43,15 +45,20 @@
 				placeholder="Phone number"
 			/>
 		{/if}
+
 		<input type="hidden" value={$page.data.event.id} name="eventId" />
-		<button disabled={!canRsvp && !isRegistered} type="submit">
-			{#if canRsvp || isRegistered}
-				{isRegistered ? unregisterText : registerText}
+
+		<button disabled={isTooLate || eventIsFull} type="submit">
+			{#if isTooLate || eventIsFull}
+				{isRegistered ? 'Registered' : 'Registering closed'}
 			{:else}
-				Registering closed
+				{isRegistered ? unregisterText : registerText}
 			{/if}
 		</button>
 	</form>
+	{#if form?.message && !form?.success}
+		<p class="errorbois">{form.message}</p>
+	{/if}
 {:else}
 	<LogInGithub />
 {/if}
@@ -74,5 +81,12 @@
 		border-color: var(--color-a);
 		display: flex;
 		gap: 1rem;
+	}
+
+	.errorbois {
+		width: fit-content;
+		margin-left: auto;
+		background-color: var(--color-err-bg);
+		color: var(--color-err-text);
 	}
 </style>
