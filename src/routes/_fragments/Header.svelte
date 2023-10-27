@@ -1,7 +1,6 @@
 <script>
 	import { page } from '$app/stores';
 	import AvatarAndName from '$lib/AvatarAndName.svelte';
-	import Logout from '$lib/Logout.svelte';
 </script>
 
 <header>
@@ -13,7 +12,6 @@
 		<div>
 			{#if $page.data.session}
 				<a class:current={$page.url.pathname === '/'} href="/"><AvatarAndName /></a>
-				<Logout />
 			{/if}
 		</div>
 	</nav>
@@ -52,11 +50,5 @@
 	nav :global(button) {
 		height: 100%;
 		background-color: transparent;
-	}
-
-	nav :global(button:hover) {
-		height: 100%;
-		background-color: transparent;
-		color: var(--color-d);
 	}
 </style>

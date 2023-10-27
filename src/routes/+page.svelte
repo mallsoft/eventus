@@ -1,6 +1,6 @@
 <script>
 	import LogInGithub from '$lib/LogInGithub.svelte';
-	import Ticket from './_fragments/Ticket.svelte';
+	import Logout from '$lib/Logout.svelte';
 
 	export let data;
 </script>
@@ -20,11 +20,16 @@
 		<ul>
 			{#each events as event}
 				<li>
-					<Ticket {event} />
+					<a class="buttony" href={event.id}>
+						{event.name}
+					</a>
 				</li>
 			{/each}
 		</ul>
 	{/if}
+	<div>
+		<Logout />
+	</div>
 	<!-- -->
 {:else}
 	<h2>To see events you are attending please log in</h2>
@@ -32,19 +37,29 @@
 {/if}
 
 <style>
-	h2 {
-		margin-bottom: 1rem;
-	}
-	ul {
-		padding: 2rem 0;
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-	}
 	p {
 		max-width: fit-content;
 		padding: 1rem;
 		background-color: var(--color-b);
 		color: var(--color-c);
+	}
+
+	h2 {
+		padding: 1rem;
+	}
+	ul {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	a {
+		width: 100%;
+		justify-content: flex-start;
+	}
+
+	div {
+		margin-top: 3rem;
+		margin-left: auto;
 	}
 </style>

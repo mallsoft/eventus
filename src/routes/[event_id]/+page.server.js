@@ -27,7 +27,7 @@ export const actions = {
 
 		if (error) {
 			console.error(error);
-			return fail(500, { message: 'Server error. Try again later.' });
+			return fail(500, { message: error?.message ?? 'Server error. Try again later.' });
 		}
 
 		return { success: true };
@@ -40,7 +40,9 @@ export const actions = {
 
 		if (error) {
 			console.error(error);
-			return fail(500, { message: 'Server error. Try again later.' });
+			return fail(500, {
+				message: error?.message ?? 'Server error. Try again later.'
+			});
 		}
 
 		return { success: true };
