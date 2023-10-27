@@ -1,8 +1,8 @@
 import { error } from '@sveltejs/kit';
-import QRCode from 'qrcode';
 
-/** @type {import('./$types').PageLoad} */
+/** @type {import('$types').PageServerLoad} */
 export const load = async ({ locals: { supabase }, params: { event_id, ticket_ref } }) => {
+	// check ticket
 	let { data, error: err } = await supabase.rpc('check_ticket_w_meta', {
 		ticket_event_id: event_id,
 		ticket_ref
@@ -12,8 +12,6 @@ export const load = async ({ locals: { supabase }, params: { event_id, ticket_re
 		console.log(err);
 		throw error(500, err);
 	}
-
-	console.log(data);
 
 	return { ticketInfo: data };
 };

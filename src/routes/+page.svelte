@@ -5,6 +5,8 @@
 	export let data;
 </script>
 
+{data.event_admin}
+
 <h1>DNB Event</h1>
 {#if data.session}
 	<!-- events -->
