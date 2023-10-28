@@ -44,7 +44,7 @@ export const actions = {
 			});
 		}
 
-		throw redirect(303, '/' + event_id);
+		throw redirect(303, '/' + event_id); // go to event
 	},
 	eventDelete: async ({ locals: { supabase }, params: { event_id } }) => {
 		console.log('DELETE EVENT', event_id);

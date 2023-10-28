@@ -26,21 +26,3 @@ export const dateTimeFormat = (d) => {
 	const minute = String(d.getMinutes()).padStart(2, '0');
 	return `${year}-${month}-${day}T${hour}:${minute}`;
 };
-
-/**
- * Convert to timezoned date string
- * @param {*} tz - time stamb
- */
-export const d = (tz) => {
-	const opts = {
-		year: '2-digit',
-		month: 'numeric',
-		day: 'numeric',
-		hour: 'numeric',
-		minute: 'numeric'
-	};
-
-	const dt = new Intl.DateTimeFormat(undefined, opts);
-
-	return dt.format(new Date(tz)).toString();
-};

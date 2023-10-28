@@ -12,8 +12,10 @@
 		{@const events = data?.events}
 		{@const count = data?.events.length}
 		<!--  -->
-		<h2>Attending {count} event{count !== 1 ? 's' : ''}</h2>
-		{#if count === 0}
+		{#if count}
+			<h2>Attending {count} event{count !== 1 ? 's' : ''}</h2>
+		{:else}
+			<h2>No events registered</h2>
 			<p>To register for an event you should have recieved an event link trough email</p>
 		{/if}
 
@@ -39,13 +41,13 @@
 
 <style>
 	p {
-		max-width: fit-content;
-		padding: 1rem;
-		background-color: var(--color-b);
+		padding: 2rem;
+		background-color: var(--color-d);
 		color: var(--color-c);
 	}
 
 	h2 {
+		color: var(--color-d);
 		padding: 1rem;
 	}
 

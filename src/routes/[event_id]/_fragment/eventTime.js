@@ -10,9 +10,18 @@ export const eventTime = (
 	locale = undefined
 ) => {
 	const dt = new Intl.DateTimeFormat(locale, opts);
-	const startEndRange = dt.formatRange(new Date(start_time), new Date(end_time));
-	const rsvpTime = dt.format(new Date(rsvp_before));
-	const isAfterRsvp = new Date().getTime() >= new Date(rsvp_before).getTime();
+
+	const _NOW = new Date();
+
+	const _start = new Date(start_time);
+	const _end = new Date(end_time);
+	const _rsvp = new Date(rsvp_before);
+
+	const startEndRange = dt.formatRange(_start, _end);
+
+	const rsvpTime = dt.format(_rsvp);
+
+	const isAfterRsvp = _NOW.getTime() >= _rsvp.getTime();
 
 	return {
 		isAfterRsvp,
