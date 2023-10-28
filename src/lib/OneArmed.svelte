@@ -2,7 +2,7 @@
 	import { createEventDispatcher, onMount } from 'svelte';
 	const WHEEL_COUNT = 3; // most of the code assumes 3 wheels, but it should be easy to modify
 
-	const segments = ['💎', '🍓', '🔔', '🧸', '🍀', '💎', '🍓', '🎰', '🔔', '🧸', '🍀'];
+	const segments = ['💎', '🍓', '🔔', '🧸', '🍀', '💎', '🍓', '🔔', '🧸', '🍀'];
 
 	const positions = Array(WHEEL_COUNT).fill(0);
 	const animating = Array(WHEEL_COUNT);
@@ -15,7 +15,7 @@
 	$: canLock = !winningIcon;
 	$: noMoney = coin - cost < 0;
 	$: noPlay = animating.includes(true) || noMoney; // is already running or cant afford to play
-	$: lockCost = locked.filter((x) => x).length ** 2 * 50; // should cost more to lock wheels
+	$: lockCost = locked.filter((x) => x).length ** 2 * 30; // should cost more to lock wheels
 	$: cost = Math.max(lockCost, 20);
 
 	function spin(idx, immediate) {
@@ -76,12 +76,12 @@
 				}
 				if (center === frame[0][0] && center === frame[2][2]) {
 					// diagonal top left -> bottom
-					coin += 250;
+					coin += 150;
 					return (winningIcon = center);
 				}
 				if (center === frame[0][2] && center === frame[2][0]) {
 					// diagonal top right -> bottom
-					coin += 250;
+					coin += 150;
 					return (winningIcon = center);
 				}
 			}

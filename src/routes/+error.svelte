@@ -9,7 +9,7 @@
 <section>
 	<h2>Errortainment</h2>
 	<OneArmed
-		coin={100}
+		coin={parseInt($page.status) || 500}
 		on:gameover={() => {
 			goto('/');
 		}}
