@@ -5,7 +5,7 @@
 
 <header>
 	<nav>
-		{#if $page.data.event_admin && $page.url.pathname !== '/event-admin'}
+		{#if $page.data.event_admin}
 			<a href="/event-admin">λ</a>
 		{/if}
 
