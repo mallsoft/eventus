@@ -6,14 +6,18 @@
 
 {#if data.events}
 	<ol>
-		{#each data.events as { id, name, max_pax, pax }}
+		{#each data.events as { id, name, max_pax, pax, publish_on }}
+			{@const isPublished = new Date() > new Date(publish_on)}
 			<li>
 				<h2>
 					<a href="/{id}">{name}</a>
 				</h2>
-				<p>
-					Registered ({pax}/{max_pax})
-				</p>
+				<ul>
+					{#if isPublished}
+						<li>Published</li>
+					{/if}
+					<li>Registered {pax} / {max_pax}</li>
+				</ul>
 				<div>
 					<a class="buttony" href="/event-admin/{id}/edit">Edit</a>
 				</div>
@@ -41,15 +45,28 @@
 		width: 100%;
 	}
 
-	li {
+	ol li {
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 		border: 1px solid transparent;
 	}
 
-	li div {
+	ol li div {
 		display: flex;
 		gap: 1rem;
+	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5em;
+		font-size: 0.895em;
+	}
+
+	ul li {
+		padding: 0.125em 0.25em;
+		color: var(--color-a);
+		background-color: var(--color-b);
 	}
 </style>
