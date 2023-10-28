@@ -18,11 +18,12 @@
 		{/if}
 
 		<ul>
-			{#each events as event}
+			{#each events as { name, id }}
 				<li>
-					<a class="buttony" href={event.id}>
-						{event.name}
+					<a class="buttony" href={id}>
+						{name}
 					</a>
+					<a class="buttony" href="{id}/ticket">Show Ticket</a>
 				</li>
 			{/each}
 		</ul>
@@ -47,19 +48,25 @@
 	h2 {
 		padding: 1rem;
 	}
+
 	ul {
 		display: flex;
 		flex-direction: column;
 		gap: 0.25rem;
 	}
 
-	a {
-		width: 100%;
+	li {
+		display: flex;
+		gap: 1rem;
+	}
+
+	li a:first-of-type {
+		flex-grow: 1;
 		justify-content: flex-start;
 	}
 
 	div {
-		margin-top: 3rem;
+		margin-top: 8rem;
 		margin-left: auto;
 	}
 </style>
