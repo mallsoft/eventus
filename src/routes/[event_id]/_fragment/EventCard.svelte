@@ -50,5 +50,6 @@
 		white-space: pre-wrap;
 		margin-bottom: 2rem;
 		margin-top: 1rem;
+		line-height: 1.25;
 	}
 </style>
