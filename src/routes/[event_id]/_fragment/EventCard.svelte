@@ -8,7 +8,7 @@
 		{name}
 	</h2>
 
-	<p class="desc">
+	<p>
 		{description}
 	</p>
 
@@ -23,14 +23,13 @@
 	}
 
 	article {
+		position: relative;
 		display: flex;
 		flex-direction: column;
 		gap: 1rem;
 
 		min-height: 12rem;
 		padding: 1.5rem;
-
-		position: relative;
 
 		word-wrap: break-word;
 	}
@@ -44,9 +43,7 @@
 	article > p {
 		font-size: 1.4rem;
 		color: var(--color-d);
-	}
 
-	.desc {
 		white-space: pre-wrap;
 		margin-bottom: 2rem;
 		margin-top: 1rem;
