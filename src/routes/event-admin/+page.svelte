@@ -65,6 +65,7 @@
 	}
 
 	ul li {
+		border-radius: 4px;
 		padding: 0.125em 0.25em;
 		color: var(--color-a);
 		background-color: var(--color-b);
